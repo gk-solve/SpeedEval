@@ -22,6 +22,8 @@
 {
     auto start = chrono::system_clock::now();
     
+    cout << "START" << endl;
+    
     for (int i=0;i<50;++i)
     {
         cout << rand() << endl;

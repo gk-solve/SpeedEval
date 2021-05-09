@@ -11,12 +11,12 @@ int * NumbersSeries::getRandomArray()
 {
     static int r[10];
     
-    //srand((unsigned)time(NULL));
+    srand((unsigned)time(NULL));
     
     for (int i=0;i<10;++i)
     {
-        r[i] = i;//rand();
-        cout << r[i] <<endl;
+        r[i] = rand();
+        cout << "spec " << r[i] <<endl;
     }
     
     return r;
