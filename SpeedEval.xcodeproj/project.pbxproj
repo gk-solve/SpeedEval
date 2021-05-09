@@ -18,6 +18,7 @@
 		D845D96C2647E98100757434 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D96B2647E98100757434 /* MainViewController.swift */; };
 		D845D96D2647E98100757434 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D96B2647E98100757434 /* MainViewController.swift */; };
 		D845D96E2647E98100757434 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D96B2647E98100757434 /* MainViewController.swift */; };
+		D845D9832647EDA800757434 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D845D9822647EDA800757434 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		D845D94F2647E76D00757434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D845D95E2647E7F900757434 /* AppCommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommons.swift; sourceTree = "<group>"; };
 		D845D96B2647E98100757434 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D845D9822647EDA800757434 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D845D9832647EDA800757434 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +88,7 @@
 				D845D9412647E76D00757434 /* SpeedEvalTests */,
 				D845D94C2647E76D00757434 /* SpeedEvalUITests */,
 				D845D9292647E76B00757434 /* Products */,
+				D845D9812647EDA800757434 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +155,14 @@
 				D845D9342647E76D00757434 /* Assets.xcassets */,
 			);
 			path = "App assets";
+			sourceTree = "<group>";
+		};
+		D845D9812647EDA800757434 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D845D9822647EDA800757434 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
