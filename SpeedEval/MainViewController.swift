@@ -39,10 +39,10 @@ class MainViewController: UIViewController {
         //NumbersSeriesWrapper().printRandomFromObjCPP()
         
         /* Test 2 */
-        let elapsedTime:Double = Double(NumbersSeriesWrapper().getTimeElapsed(forRandomListGeneration: 20000, inCase: 1))
+        let elapsedTime:Double = Double(NumbersSeriesObjCPP().getTimeElapsed(forRandomListGeneration: 20000, inCase: 1))
         cppLabelOne.text = String(format: "%.6f sec", elapsedTime)
         
-        let newElapsedTime:Double = Double(NumbersSeriesWrapper().getTimeElapsed(forRandomListGeneration: 20000, inCase: 2))
+        let newElapsedTime:Double = Double(NumbersSeriesObjCPP().getTimeElapsed(forRandomListGeneration: 20000, inCase: 2))
         cppLabelTwo.text = String(format: "%.6f sec", newElapsedTime)
         
     }

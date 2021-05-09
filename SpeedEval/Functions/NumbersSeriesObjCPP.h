@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NumbersSeriesWrapper: NSObject
+@interface NumbersSeriesObjCPP: NSObject
 
 
 -(void)printRandomFromCPP;
@@ -15,3 +15,4 @@
 -(double)getTimeElapsedForRandomListGeneration:(int)intFigure inCase:(int)algo;
 
 @end
+

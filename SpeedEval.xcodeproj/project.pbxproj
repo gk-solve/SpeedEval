@@ -22,10 +22,10 @@
 		D845D98D2647F06B00757434 /* NumbersSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D845D98B2647F06B00757434 /* NumbersSeries.cpp */; };
 		D845D98E2647F06B00757434 /* NumbersSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D845D98B2647F06B00757434 /* NumbersSeries.cpp */; };
 		D845D98F2647F06B00757434 /* NumbersSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D845D98B2647F06B00757434 /* NumbersSeries.cpp */; };
-		D845D9A82647F3E700757434 /* NumbersSeriesWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D845D9A72647F3E700757434 /* NumbersSeriesWrapper.mm */; };
-		D845D9A92647F3E700757434 /* NumbersSeriesWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D845D9A72647F3E700757434 /* NumbersSeriesWrapper.mm */; };
-		D845D9AA2647F3E700757434 /* NumbersSeriesWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D845D9A72647F3E700757434 /* NumbersSeriesWrapper.mm */; };
 		D845D9C92648313700757434 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D845D9C82648313700757434 /* Foundation.framework */; };
+		D850156526485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.m */; };
+		D850156626485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.m */; };
+		D850156726485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,9 +65,9 @@
 		D845D98A2647F06A00757434 /* SpeedEvalUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeedEvalUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		D845D98B2647F06B00757434 /* NumbersSeries.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NumbersSeries.cpp; path = SpeedEval/Functions/NumbersSeries.cpp; sourceTree = SOURCE_ROOT; };
 		D845D98C2647F06B00757434 /* NumbersSeries.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = NumbersSeries.hpp; path = SpeedEval/Functions/NumbersSeries.hpp; sourceTree = SOURCE_ROOT; };
-		D845D9A72647F3E700757434 /* NumbersSeriesWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NumbersSeriesWrapper.mm; sourceTree = "<group>"; };
-		D845D9B42647F40800757434 /* NumbersSeriesWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumbersSeriesWrapper.h; sourceTree = "<group>"; };
 		D845D9C82648313700757434 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D850156426485C7F00936C81 /* NumbersSeriesObjCPP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumbersSeriesObjCPP.m; sourceTree = "<group>"; };
+		D850156B26485CB100936C81 /* NumbersSeriesObjCPP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumbersSeriesObjCPP.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,8 +187,8 @@
 		D845D9872647F02800757434 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				D845D9B42647F40800757434 /* NumbersSeriesWrapper.h */,
-				D845D9A72647F3E700757434 /* NumbersSeriesWrapper.mm */,
+				D850156B26485CB100936C81 /* NumbersSeriesObjCPP.h */,
+				D850156426485C7F00936C81 /* NumbersSeriesObjCPP.m */,
 				D845D98C2647F06B00757434 /* NumbersSeries.hpp */,
 				D845D98B2647F06B00757434 /* NumbersSeries.cpp */,
 			);
@@ -337,11 +337,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D845D9A82647F3E700757434 /* NumbersSeriesWrapper.mm in Sources */,
 				D845D96C2647E98100757434 /* MainViewController.swift in Sources */,
 				D845D98D2647F06B00757434 /* NumbersSeries.cpp in Sources */,
 				D845D92C2647E76B00757434 /* AppDelegate.swift in Sources */,
 				D845D95F2647E7F900757434 /* AppCommons.swift in Sources */,
+				D850156526485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,11 +349,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D845D9A92647F3E700757434 /* NumbersSeriesWrapper.mm in Sources */,
 				D845D96D2647E98100757434 /* MainViewController.swift in Sources */,
 				D845D98E2647F06B00757434 /* NumbersSeries.cpp in Sources */,
 				D845D9602647E7F900757434 /* AppCommons.swift in Sources */,
 				D845D9432647E76D00757434 /* SpeedEvalTests.swift in Sources */,
+				D850156626485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,11 +361,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D845D9AA2647F3E700757434 /* NumbersSeriesWrapper.mm in Sources */,
 				D845D96E2647E98100757434 /* MainViewController.swift in Sources */,
 				D845D98F2647F06B00757434 /* NumbersSeries.cpp in Sources */,
 				D845D9612647E7F900757434 /* AppCommons.swift in Sources */,
 				D845D94E2647E76D00757434 /* SpeedEvalUITests.swift in Sources */,
+				D850156726485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
