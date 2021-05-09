@@ -12,26 +12,14 @@
 
 @implementation NumbersSeriesObjCPP
 
--(void)printRandomFromCPP
-{
-    NumbersSeries numbers;
-    numbers.printRandom();
-}
-
--(void)printRandomFromObjCPP
-{
-    for (int i=0;i<10;++i){cout << "From ObjCPP : " << rand() << endl;};
-}
-
--(double)getTimeElapsedForRandomListGeneration:(int)intFigure inCase:(int)algo
+-(double)getTimeElapsedOBJCPPForRandomListGeneration:(int)intFigure inCase:(int)algo
 {
     int randomArray[intFigure];
     int boolArray[intFigure];
     
-    
     /* START POINT */
     auto start = chrono::system_clock::now();
-    cout << "START" << endl;
+    cout << "CPP_START" << endl;
     
     for(int i=0;i<intFigure;++i)
     {
@@ -44,34 +32,34 @@
                 case 1:
                     {
                         randomArray[i] = rand() % (intFigure);
-                        includedYet = NO;
+                        includedYet = false;
                         if (i > 0){for (int j=0;j<i;++j){if (randomArray[i]==randomArray[j]){boolArray[j]=1;}else{boolArray[j]=0;}}}
                             int sum = 0;
                             for (int k=0;k<i;++k){sum=sum+boolArray[k];}
-                            if (sum > 0) {includedYet = YES;} else {includedYet = NO;};
+                            if (sum > 0) {includedYet = true;} else {includedYet = false;};
                         break;
                     }
                 case 2:
                     {
                         randomArray[i] = rand() % (intFigure);
-                        includedYet = NO;
-                        if (i > 0){for (int j=0;j<i;++j){if (randomArray[i]==randomArray[j]){includedYet = YES;}}}
+                        includedYet = false;
+                        if (i > 0){for (int j=0;j<i;++j){if (randomArray[i]==randomArray[j]){includedYet = true;}}}
                         break;
                     }
                 default:
                     {
-                        includedYet = NO;
+                        includedYet = false;
                     }
             }
         }
-        while (includedYet == YES);
+        while (includedYet == true);
         
-        //cout << "Random number : " << randomArray[i] << endl;
+        cout << "Random number : " << randomArray[i] << endl;
     }
     
     /* END POINT */
     auto end = chrono::system_clock::now();
-    cout << "END" << endl;
+    cout << "CPP_END" << endl;
     
     /* ELAPSED TIME */
     chrono::duration<double>elapsed_seconds = end-start;
@@ -81,6 +69,12 @@
     cout << "ELAPSED TIME :" << elapsed_seconds.count() << endl;//"s\n";
     
     return elapsed_seconds.count();
+}
+
+-(double)getTimeElapsedCPPForRandomListGeneration:(int)intFig inCase:(int)algo;
+{
+    NumbersSeries numbers;
+    return numbers.getTimeElapsedCPPForRandomListGeneration(intFig, algo);
 }
 
 @end

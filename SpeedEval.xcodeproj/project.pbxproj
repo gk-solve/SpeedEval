@@ -23,9 +23,12 @@
 		D845D98E2647F06B00757434 /* NumbersSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D845D98B2647F06B00757434 /* NumbersSeries.cpp */; };
 		D845D98F2647F06B00757434 /* NumbersSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D845D98B2647F06B00757434 /* NumbersSeries.cpp */; };
 		D845D9C92648313700757434 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D845D9C82648313700757434 /* Foundation.framework */; };
-		D850156526485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.m */; };
-		D850156626485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.m */; };
-		D850156726485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.m */; };
+		D850156526485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */; };
+		D850156626485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */; };
+		D850156726485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */; };
+		D850157926485F6300936C81 /* NumbersSeriesSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850157826485F6300936C81 /* NumbersSeriesSwift.swift */; };
+		D850157A26485F6300936C81 /* NumbersSeriesSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850157826485F6300936C81 /* NumbersSeriesSwift.swift */; };
+		D850157B26485F6300936C81 /* NumbersSeriesSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D850157826485F6300936C81 /* NumbersSeriesSwift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +69,9 @@
 		D845D98B2647F06B00757434 /* NumbersSeries.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NumbersSeries.cpp; path = SpeedEval/Functions/NumbersSeries.cpp; sourceTree = SOURCE_ROOT; };
 		D845D98C2647F06B00757434 /* NumbersSeries.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = NumbersSeries.hpp; path = SpeedEval/Functions/NumbersSeries.hpp; sourceTree = SOURCE_ROOT; };
 		D845D9C82648313700757434 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D850156426485C7F00936C81 /* NumbersSeriesObjCPP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumbersSeriesObjCPP.m; sourceTree = "<group>"; };
+		D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NumbersSeriesObjCPP.mm; sourceTree = "<group>"; };
 		D850156B26485CB100936C81 /* NumbersSeriesObjCPP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumbersSeriesObjCPP.h; sourceTree = "<group>"; };
+		D850157826485F6300936C81 /* NumbersSeriesSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersSeriesSwift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,11 +127,11 @@
 			children = (
 				D845D9392647E76D00757434 /* Info.plist */,
 				D845D96B2647E98100757434 /* MainViewController.swift */,
-				D845D9BE2647F9BB00757434 /* Bridges */,
 				D845D9782647EB9000757434 /* App commons */,
 				D845D97C2647EBCC00757434 /* AppUI */,
 				D845D97D2647EBEE00757434 /* App assets */,
 				D845D9872647F02800757434 /* Functions */,
+				D845D9BE2647F9BB00757434 /* Bridges */,
 			);
 			path = SpeedEval;
 			sourceTree = "<group>";
@@ -187,8 +191,9 @@
 		D845D9872647F02800757434 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
+				D850157826485F6300936C81 /* NumbersSeriesSwift.swift */,
 				D850156B26485CB100936C81 /* NumbersSeriesObjCPP.h */,
-				D850156426485C7F00936C81 /* NumbersSeriesObjCPP.m */,
+				D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */,
 				D845D98C2647F06B00757434 /* NumbersSeries.hpp */,
 				D845D98B2647F06B00757434 /* NumbersSeries.cpp */,
 			);
@@ -338,10 +343,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D845D96C2647E98100757434 /* MainViewController.swift in Sources */,
+				D850157926485F6300936C81 /* NumbersSeriesSwift.swift in Sources */,
 				D845D98D2647F06B00757434 /* NumbersSeries.cpp in Sources */,
 				D845D92C2647E76B00757434 /* AppDelegate.swift in Sources */,
 				D845D95F2647E7F900757434 /* AppCommons.swift in Sources */,
-				D850156526485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */,
+				D850156526485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,10 +356,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D845D96D2647E98100757434 /* MainViewController.swift in Sources */,
+				D850157A26485F6300936C81 /* NumbersSeriesSwift.swift in Sources */,
 				D845D98E2647F06B00757434 /* NumbersSeries.cpp in Sources */,
 				D845D9602647E7F900757434 /* AppCommons.swift in Sources */,
 				D845D9432647E76D00757434 /* SpeedEvalTests.swift in Sources */,
-				D850156626485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */,
+				D850156626485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,10 +369,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D845D96E2647E98100757434 /* MainViewController.swift in Sources */,
+				D850157B26485F6300936C81 /* NumbersSeriesSwift.swift in Sources */,
 				D845D98F2647F06B00757434 /* NumbersSeries.cpp in Sources */,
 				D845D9612647E7F900757434 /* AppCommons.swift in Sources */,
 				D845D94E2647E76D00757434 /* SpeedEvalUITests.swift in Sources */,
-				D850156726485C7F00936C81 /* NumbersSeriesObjCPP.m in Sources */,
+				D850156726485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

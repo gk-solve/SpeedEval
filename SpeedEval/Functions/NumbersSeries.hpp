@@ -18,8 +18,7 @@ using namespace std;
 class NumbersSeries
 {
     public:
-    int * getRandomArray();
-    void printRandom();
+    double getTimeElapsedCPPForRandomListGeneration(int intFigure, int inCase);
 };
 
 #endif /* NumbersSeries_hpp */

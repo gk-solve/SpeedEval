@@ -9,10 +9,8 @@
 
 @interface NumbersSeriesObjCPP: NSObject
 
-
--(void)printRandomFromCPP;
--(void)printRandomFromObjCPP;
--(double)getTimeElapsedForRandomListGeneration:(int)intFigure inCase:(int)algo;
+-(double)getTimeElapsedOBJCPPForRandomListGeneration:(int)intFigure inCase:(int)algo;
+-(double)getTimeElapsedCPPForRandomListGeneration:(int)intFig inCase:(int)algo;
 
 @end
 
