@@ -11,5 +11,6 @@
 
 -(void)printRandom;
 -(void)newPrintRandom;
+-(int)getTimeElapsedToGenerateRandomNumbersList:(int)intFigure;
 
 @end

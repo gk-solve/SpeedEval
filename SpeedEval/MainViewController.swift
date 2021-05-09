@@ -27,8 +27,9 @@ class MainViewController: UIViewController {
         self.view.addSubview(resultLabel)
         
 
-        NumbersSeriesWrapper().printRandom()
-        NumbersSeriesWrapper().newPrintRandom()
+        //NumbersSeriesWrapper().printRandom()
+        //NumbersSeriesWrapper().newPrintRandom()
+        NumbersSeriesWrapper().getTimeElapsed(toGenerateRandomNumbersList: 30000)
         
     }
 
