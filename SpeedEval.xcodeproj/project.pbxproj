@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		D845D92C2647E76B00757434 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D92B2647E76B00757434 /* AppDelegate.swift */; };
-		D845D92E2647E76B00757434 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D92D2647E76B00757434 /* SceneDelegate.swift */; };
-		D845D9302647E76B00757434 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D92F2647E76B00757434 /* ViewController.swift */; };
 		D845D9332647E76B00757434 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D845D9312647E76B00757434 /* Main.storyboard */; };
 		D845D9352647E76D00757434 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D845D9342647E76D00757434 /* Assets.xcassets */; };
 		D845D9382647E76D00757434 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D845D9362647E76D00757434 /* LaunchScreen.storyboard */; };
 		D845D9432647E76D00757434 /* SpeedEvalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D9422647E76D00757434 /* SpeedEvalTests.swift */; };
 		D845D94E2647E76D00757434 /* SpeedEvalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D94D2647E76D00757434 /* SpeedEvalUITests.swift */; };
+		D845D95F2647E7F900757434 /* AppCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D95E2647E7F900757434 /* AppCommons.swift */; };
+		D845D9602647E7F900757434 /* AppCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D95E2647E7F900757434 /* AppCommons.swift */; };
+		D845D9612647E7F900757434 /* AppCommons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D95E2647E7F900757434 /* AppCommons.swift */; };
+		D845D96C2647E98100757434 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D96B2647E98100757434 /* MainViewController.swift */; };
+		D845D96D2647E98100757434 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D96B2647E98100757434 /* MainViewController.swift */; };
+		D845D96E2647E98100757434 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D96B2647E98100757434 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +41,6 @@
 /* Begin PBXFileReference section */
 		D845D9282647E76B00757434 /* SpeedEval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedEval.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D845D92B2647E76B00757434 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D845D92D2647E76B00757434 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D845D92F2647E76B00757434 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D845D9322647E76B00757434 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D845D9342647E76D00757434 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D845D9372647E76D00757434 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		D845D9492647E76D00757434 /* SpeedEvalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeedEvalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D845D94D2647E76D00757434 /* SpeedEvalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedEvalUITests.swift; sourceTree = "<group>"; };
 		D845D94F2647E76D00757434 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D845D95E2647E7F900757434 /* AppCommons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCommons.swift; sourceTree = "<group>"; };
+		D845D96B2647E98100757434 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				D845D92B2647E76B00757434 /* AppDelegate.swift */,
-				D845D92D2647E76B00757434 /* SceneDelegate.swift */,
-				D845D92F2647E76B00757434 /* ViewController.swift */,
+				D845D95E2647E7F900757434 /* AppCommons.swift */,
+				D845D96B2647E98100757434 /* MainViewController.swift */,
 				D845D9312647E76B00757434 /* Main.storyboard */,
 				D845D9342647E76D00757434 /* Assets.xcassets */,
 				D845D9362647E76D00757434 /* LaunchScreen.storyboard */,
@@ -258,9 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D845D9302647E76B00757434 /* ViewController.swift in Sources */,
+				D845D96C2647E98100757434 /* MainViewController.swift in Sources */,
 				D845D92C2647E76B00757434 /* AppDelegate.swift in Sources */,
-				D845D92E2647E76B00757434 /* SceneDelegate.swift in Sources */,
+				D845D95F2647E7F900757434 /* AppCommons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +272,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D845D96D2647E98100757434 /* MainViewController.swift in Sources */,
+				D845D9602647E7F900757434 /* AppCommons.swift in Sources */,
 				D845D9432647E76D00757434 /* SpeedEvalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +282,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D845D96E2647E98100757434 /* MainViewController.swift in Sources */,
+				D845D9612647E7F900757434 /* AppCommons.swift in Sources */,
 				D845D94E2647E76D00757434 /* SpeedEvalUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
