@@ -26,6 +26,10 @@ class MainViewController: UIViewController {
         resultLabel.text = "Result"
         self.view.addSubview(resultLabel)
         
+
+        NumbersSeriesWrapper().printRandom()
+        NumbersSeriesWrapper().newPrintRandom()
+        
     }
 
 
