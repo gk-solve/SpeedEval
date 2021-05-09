@@ -25,6 +25,7 @@
 		D845D9A82647F3E700757434 /* NumbersSeriesWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D845D9A72647F3E700757434 /* NumbersSeriesWrapper.mm */; };
 		D845D9A92647F3E700757434 /* NumbersSeriesWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D845D9A72647F3E700757434 /* NumbersSeriesWrapper.mm */; };
 		D845D9AA2647F3E700757434 /* NumbersSeriesWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = D845D9A72647F3E700757434 /* NumbersSeriesWrapper.mm */; };
+		D845D9C92648313700757434 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D845D9C82648313700757434 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		D845D98C2647F06B00757434 /* NumbersSeries.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = NumbersSeries.hpp; path = SpeedEval/Functions/NumbersSeries.hpp; sourceTree = SOURCE_ROOT; };
 		D845D9A72647F3E700757434 /* NumbersSeriesWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NumbersSeriesWrapper.mm; sourceTree = "<group>"; };
 		D845D9B42647F40800757434 /* NumbersSeriesWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumbersSeriesWrapper.h; sourceTree = "<group>"; };
+		D845D9C82648313700757434 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D845D9832647EDA800757434 /* CoreGraphics.framework in Frameworks */,
+				D845D9C92648313700757434 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +178,7 @@
 		D845D9812647EDA800757434 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D845D9C82648313700757434 /* Foundation.framework */,
 				D845D9822647EDA800757434 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;

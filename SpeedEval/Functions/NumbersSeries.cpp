@@ -16,7 +16,7 @@ int * NumbersSeries::getRandomArray()
     for (int i=0;i<10;++i)
     {
         r[i] = rand();
-        cout << "spec " << r[i] <<endl;
+        cout << "From CPP : " << r[i] <<endl;
     }
     
     return r;

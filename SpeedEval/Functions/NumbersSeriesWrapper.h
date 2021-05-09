@@ -9,8 +9,9 @@
 
 @interface NumbersSeriesWrapper: NSObject
 
--(void)printRandom;
--(void)newPrintRandom;
--(int)getTimeElapsedToGenerateRandomNumbersList:(int)intFigure;
+
+-(void)printRandomFromCPP;
+-(void)printRandomFromObjCPP;
+-(double)getTimeElapsedForRandomListGeneration:(int)intFigure inCase:(int)algo;
 
 @end
