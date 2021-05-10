@@ -1,21 +1,17 @@
 //
-//  NumbersSeriesWrapper.m
+//  NumbersSeriesCPP.cpp
 //  SpeedEval
 //
-//  Created by GK on 09/05/2021.
+//  Created by GK on 10/05/2021.
 //
 
-#import <Foundation/Foundation.h>
-#import "NumbersSeriesObjCPP.h"
+#include "NumbersSeriesCPP.hpp"
 
-#import "NumbersSeriesCPP.hpp"
-
-@implementation NumbersSeriesObjCPP
-
--(double)getTimeElapsedOBJCPPForRandomListGeneration:(int)intFigure inCase:(int)algo
+double NumbersSeriesCPP::getTimeElapsedCPPForRandomListGeneration(int intFigure, int inCase)
 {
     int randomArray[intFigure];
     int boolArray[intFigure];
+    
     
     /* START POINT */
     auto start = chrono::system_clock::now();
@@ -27,7 +23,7 @@
         
         do
         {
-            switch (algo)
+            switch (inCase)
             {
                 case 1:
                     {
@@ -70,11 +66,3 @@
     
     return elapsed_seconds.count();
 }
-
--(double)getTimeElapsedCPPForRandomListGeneration:(int)intFig inCase:(int)algo;
-{
-    NumbersSeriesCPP numbers;
-    return numbers.getTimeElapsedCPPForRandomListGeneration(intFig, algo);
-}
-
-@end

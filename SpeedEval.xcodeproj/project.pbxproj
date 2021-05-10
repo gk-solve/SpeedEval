@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D82F337026494E4C000D3B17 /* NumbersSeriesCPP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */; };
+		D82F337126494E4C000D3B17 /* NumbersSeriesCPP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */; };
+		D82F337226494E4C000D3B17 /* NumbersSeriesCPP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */; };
 		D845D92C2647E76B00757434 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D92B2647E76B00757434 /* AppDelegate.swift */; };
 		D845D9352647E76D00757434 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D845D9342647E76D00757434 /* Assets.xcassets */; };
 		D845D9382647E76D00757434 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D845D9362647E76D00757434 /* LaunchScreen.storyboard */; };
@@ -19,9 +22,6 @@
 		D845D96D2647E98100757434 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D96B2647E98100757434 /* MainViewController.swift */; };
 		D845D96E2647E98100757434 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D96B2647E98100757434 /* MainViewController.swift */; };
 		D845D9832647EDA800757434 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D845D9822647EDA800757434 /* CoreGraphics.framework */; };
-		D845D98D2647F06B00757434 /* NumbersSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D845D98B2647F06B00757434 /* NumbersSeries.cpp */; };
-		D845D98E2647F06B00757434 /* NumbersSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D845D98B2647F06B00757434 /* NumbersSeries.cpp */; };
-		D845D98F2647F06B00757434 /* NumbersSeries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D845D98B2647F06B00757434 /* NumbersSeries.cpp */; };
 		D845D9C92648313700757434 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D845D9C82648313700757434 /* Foundation.framework */; };
 		D850156526485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */; };
 		D850156626485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */ = {isa = PBXBuildFile; fileRef = D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */; };
@@ -49,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersSeriesCPP.cpp; sourceTree = "<group>"; };
+		D82F336F26494E4C000D3B17 /* NumbersSeriesCPP.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NumbersSeriesCPP.hpp; sourceTree = "<group>"; };
 		D845D9282647E76B00757434 /* SpeedEval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedEval.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D845D92B2647E76B00757434 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D845D9342647E76D00757434 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,8 +68,6 @@
 		D845D9882647F06A00757434 /* SpeedEval-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeedEval-Bridging-Header.h"; sourceTree = "<group>"; };
 		D845D9892647F06A00757434 /* SpeedEvalTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeedEvalTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		D845D98A2647F06A00757434 /* SpeedEvalUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeedEvalUITests-Bridging-Header.h"; sourceTree = "<group>"; };
-		D845D98B2647F06B00757434 /* NumbersSeries.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = NumbersSeries.cpp; path = SpeedEval/Functions/NumbersSeries.cpp; sourceTree = SOURCE_ROOT; };
-		D845D98C2647F06B00757434 /* NumbersSeries.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = NumbersSeries.hpp; path = SpeedEval/Functions/NumbersSeries.hpp; sourceTree = SOURCE_ROOT; };
 		D845D9C82648313700757434 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = NumbersSeriesObjCPP.mm; sourceTree = "<group>"; };
 		D850156B26485CB100936C81 /* NumbersSeriesObjCPP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumbersSeriesObjCPP.h; sourceTree = "<group>"; };
@@ -194,8 +194,8 @@
 				D850157826485F6300936C81 /* NumbersSeriesSwift.swift */,
 				D850156B26485CB100936C81 /* NumbersSeriesObjCPP.h */,
 				D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */,
-				D845D98C2647F06B00757434 /* NumbersSeries.hpp */,
-				D845D98B2647F06B00757434 /* NumbersSeries.cpp */,
+				D82F336F26494E4C000D3B17 /* NumbersSeriesCPP.hpp */,
+				D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -343,8 +343,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D845D96C2647E98100757434 /* MainViewController.swift in Sources */,
+				D82F337026494E4C000D3B17 /* NumbersSeriesCPP.cpp in Sources */,
 				D850157926485F6300936C81 /* NumbersSeriesSwift.swift in Sources */,
-				D845D98D2647F06B00757434 /* NumbersSeries.cpp in Sources */,
 				D845D92C2647E76B00757434 /* AppDelegate.swift in Sources */,
 				D845D95F2647E7F900757434 /* AppCommons.swift in Sources */,
 				D850156526485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */,
@@ -356,8 +356,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D845D96D2647E98100757434 /* MainViewController.swift in Sources */,
+				D82F337126494E4C000D3B17 /* NumbersSeriesCPP.cpp in Sources */,
 				D850157A26485F6300936C81 /* NumbersSeriesSwift.swift in Sources */,
-				D845D98E2647F06B00757434 /* NumbersSeries.cpp in Sources */,
 				D845D9602647E7F900757434 /* AppCommons.swift in Sources */,
 				D845D9432647E76D00757434 /* SpeedEvalTests.swift in Sources */,
 				D850156626485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */,
@@ -369,8 +369,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D845D96E2647E98100757434 /* MainViewController.swift in Sources */,
+				D82F337226494E4C000D3B17 /* NumbersSeriesCPP.cpp in Sources */,
 				D850157B26485F6300936C81 /* NumbersSeriesSwift.swift in Sources */,
-				D845D98F2647F06B00757434 /* NumbersSeries.cpp in Sources */,
 				D845D9612647E7F900757434 /* AppCommons.swift in Sources */,
 				D845D94E2647E76D00757434 /* SpeedEvalUITests.swift in Sources */,
 				D850156726485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */,

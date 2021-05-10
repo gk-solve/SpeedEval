@@ -123,9 +123,6 @@ class MainViewController: UIViewController {
         
         /*-------------------------------------------------------------------------------------------------------------------------------*/
         
-        /* Test 1 */
-        //NumbersSeriesWrapper().printRandomFromCPP()
-        //NumbersSeriesWrapper().printRandomFromObjCPP()
     }
     
     @objc func generateListsAndStats()
