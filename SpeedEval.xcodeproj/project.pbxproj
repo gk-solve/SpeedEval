@@ -10,6 +10,9 @@
 		D82F337026494E4C000D3B17 /* NumbersSeriesCPP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */; };
 		D82F337126494E4C000D3B17 /* NumbersSeriesCPP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */; };
 		D82F337226494E4C000D3B17 /* NumbersSeriesCPP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */; };
+		D82F337B26495D09000D3B17 /* NumbersSeriesObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F337A26495D09000D3B17 /* NumbersSeriesObjC.m */; };
+		D82F337C26495D09000D3B17 /* NumbersSeriesObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F337A26495D09000D3B17 /* NumbersSeriesObjC.m */; };
+		D82F337D26495D09000D3B17 /* NumbersSeriesObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F337A26495D09000D3B17 /* NumbersSeriesObjC.m */; };
 		D845D92C2647E76B00757434 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D845D92B2647E76B00757434 /* AppDelegate.swift */; };
 		D845D9352647E76D00757434 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D845D9342647E76D00757434 /* Assets.xcassets */; };
 		D845D9382647E76D00757434 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D845D9362647E76D00757434 /* LaunchScreen.storyboard */; };
@@ -51,6 +54,8 @@
 /* Begin PBXFileReference section */
 		D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersSeriesCPP.cpp; sourceTree = "<group>"; };
 		D82F336F26494E4C000D3B17 /* NumbersSeriesCPP.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NumbersSeriesCPP.hpp; sourceTree = "<group>"; };
+		D82F337926495D09000D3B17 /* NumbersSeriesObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NumbersSeriesObjC.h; sourceTree = "<group>"; };
+		D82F337A26495D09000D3B17 /* NumbersSeriesObjC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumbersSeriesObjC.m; sourceTree = "<group>"; };
 		D845D9282647E76B00757434 /* SpeedEval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedEval.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D845D92B2647E76B00757434 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D845D9342647E76D00757434 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -194,6 +199,8 @@
 				D850157826485F6300936C81 /* NumbersSeriesSwift.swift */,
 				D850156B26485CB100936C81 /* NumbersSeriesObjCPP.h */,
 				D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */,
+				D82F337926495D09000D3B17 /* NumbersSeriesObjC.h */,
+				D82F337A26495D09000D3B17 /* NumbersSeriesObjC.m */,
 				D82F336F26494E4C000D3B17 /* NumbersSeriesCPP.hpp */,
 				D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */,
 			);
@@ -347,6 +354,7 @@
 				D850157926485F6300936C81 /* NumbersSeriesSwift.swift in Sources */,
 				D845D92C2647E76B00757434 /* AppDelegate.swift in Sources */,
 				D845D95F2647E7F900757434 /* AppCommons.swift in Sources */,
+				D82F337B26495D09000D3B17 /* NumbersSeriesObjC.m in Sources */,
 				D850156526485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,6 +368,7 @@
 				D850157A26485F6300936C81 /* NumbersSeriesSwift.swift in Sources */,
 				D845D9602647E7F900757434 /* AppCommons.swift in Sources */,
 				D845D9432647E76D00757434 /* SpeedEvalTests.swift in Sources */,
+				D82F337C26495D09000D3B17 /* NumbersSeriesObjC.m in Sources */,
 				D850156626485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +382,7 @@
 				D850157B26485F6300936C81 /* NumbersSeriesSwift.swift in Sources */,
 				D845D9612647E7F900757434 /* AppCommons.swift in Sources */,
 				D845D94E2647E76D00757434 /* SpeedEvalUITests.swift in Sources */,
+				D82F337D26495D09000D3B17 /* NumbersSeriesObjC.m in Sources */,
 				D850156726485C7F00936C81 /* NumbersSeriesObjCPP.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

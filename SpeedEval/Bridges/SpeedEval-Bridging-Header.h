@@ -3,3 +3,4 @@
 //
 
 #import "NumbersSeriesObjCPP.h"
+#import "NumbersSeriesObjC.h"

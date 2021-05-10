@@ -50,7 +50,7 @@ double NumbersSeriesCPP::getTimeElapsedCPPForRandomListGeneration(int intFigure,
         }
         while (includedYet == true);
         
-        cout << "Random number : " << randomArray[i] << endl;
+        //cout << "Random number : " << randomArray[i] << endl;
     }
     
     /* END POINT */
@@ -59,10 +59,10 @@ double NumbersSeriesCPP::getTimeElapsedCPPForRandomListGeneration(int intFigure,
     
     /* ELAPSED TIME */
     chrono::duration<double>elapsed_seconds = end-start;
-    time_t end_time = chrono::system_clock::to_time_t(end);
+    //time_t end_time = chrono::system_clock::to_time_t(end);
         
-    cout << "FINISHED COMPUTATION AT " << ctime(&end_time) << endl;
-    cout << "ELAPSED TIME :" << elapsed_seconds.count() << endl;//"s\n";
+    //cout << "FINISHED COMPUTATION AT " << ctime(&end_time) << endl;
+    //cout << "ELAPSED TIME :" << elapsed_seconds.count() << endl;//"s\n";
     
     return elapsed_seconds.count();
 }

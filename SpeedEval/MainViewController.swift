@@ -13,14 +13,17 @@ import CoreGraphics
 class MainViewController: UIViewController {
 
     let CaseOneOBJCPP = UILabel()
+    let CaseOneOBJC = UILabel()
     let CaseOneCPP = UILabel()
     let CaseOneSWIFT = UILabel()
     let CaseTwoOBJCPP = UILabel()
+    let CaseTwoOBJC = UILabel()
     let CaseTwoCPP = UILabel()
     let CaseTwoSWIFT = UILabel()
     let CaseThreeSWIFT = UILabel()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
        
         /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -30,10 +33,7 @@ class MainViewController: UIViewController {
         self.generateListsAndStats()
 
         /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
-        /* Test 1 */
-        //NumbersSeriesWrapper().printRandomFromCPP()
-        //NumbersSeriesWrapper().printRandomFromObjCPP()
+            
     }
     
     func createInterface()
@@ -69,6 +69,15 @@ class MainViewController: UIViewController {
         
         rowRank = rowRank + 1
         
+        /* CASE 1 : OBJC */
+        CaseOneOBJC.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseOneOBJC.textAlignment = NSTextAlignment.left
+        self.view.addSubview(CaseOneOBJC)
+        
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+        
+        rowRank = rowRank + 1
+        
         /* CASE 1 : CPP */
         CaseOneCPP.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
         CaseOneCPP.textAlignment = NSTextAlignment.left
@@ -93,6 +102,15 @@ class MainViewController: UIViewController {
         CaseTwoOBJCPP.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseTwoOBJCPP)
                 
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+        
+        rowRank = rowRank + 1
+        
+        /* CASE 2 : OBJC */
+        CaseTwoOBJC.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseTwoOBJC.textAlignment = NSTextAlignment.left
+        self.view.addSubview(CaseTwoOBJC)
+        
         /*-------------------------------------------------------------------------------------------------------------------------------*/
         
         rowRank = rowRank + 1
@@ -127,7 +145,7 @@ class MainViewController: UIViewController {
     
     @objc func generateListsAndStats()
     {
-        let topInt:Int = 100
+        let topInt:Int = 10
         
         /*-------------------------------------------------------------------------------------------------------------------------------*/
         /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -136,6 +154,13 @@ class MainViewController: UIViewController {
         
         let objcppElapsedTimeOne:Double = Double(NumbersSeriesObjCPP().getTimeElapsedOBJCPP(forRandomListGeneration: Int32(topInt), inCase: 1))
         CaseOneOBJCPP.text = String(format: "Case1 : %.6f sec | OBJC++", objcppElapsedTimeOne)
+        
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+        
+        /* CASE 1 : OBJC */
+        
+        let objcElapsedTimeOne:Double = Double(NumbersSeriesObjC().getTimeElapsedOBJC(forRandomListGeneration: Int32(topInt), inCase: 1))
+        CaseOneOBJC.text = String(format: "Case1 : %.6f sec | OBJC (x%.2f)", objcElapsedTimeOne, objcElapsedTimeOne/objcppElapsedTimeOne)
         
         /*-------------------------------------------------------------------------------------------------------------------------------*/
         
@@ -158,6 +183,13 @@ class MainViewController: UIViewController {
         
         let objcppElapsedTimeTwo:Double = Double(NumbersSeriesObjCPP().getTimeElapsedOBJCPP(forRandomListGeneration: Int32(topInt), inCase: 2))
         CaseTwoOBJCPP.text = String(format: "Case2 : %.6f sec | OBJC++", objcppElapsedTimeTwo)
+        
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+        
+        /* CASE 2 : OBJC */
+        
+        let objcElapsedTimeTwo:Double = Double(NumbersSeriesObjC().getTimeElapsedOBJC(forRandomListGeneration: Int32(topInt), inCase: 2))
+        CaseTwoOBJC.text = String(format: "Case2 : %.6f sec | OBJC (x%.2f)", objcElapsedTimeTwo, objcElapsedTimeTwo/objcppElapsedTimeTwo)
         
         /*-------------------------------------------------------------------------------------------------------------------------------*/
         

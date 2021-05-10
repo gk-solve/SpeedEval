@@ -52,7 +52,7 @@ class NumbersSeriesSwift
             while includedYet == true;
             
             randomArray.append(randomNumber)
-            print(randomArray[i])
+            //print(randomArray[i])
         }
         
         let endTime = Date()
