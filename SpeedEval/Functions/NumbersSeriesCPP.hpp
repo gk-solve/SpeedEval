@@ -1,9 +1,12 @@
-//
-//  NumbersSeriesCPP.hpp
-//  SpeedEval
-//
-//  Created by GK on 10/05/2021.
-//
+/*
+ *  FILENAME : NumbersSeriesCPP.hpp
+ *  APPID : eu.soleriant.SpeedEval
+ *  CREATION DATE : 2021, May 10th
+ *  AUTHOR : GK
+ *  CONTRIBUTORS : -
+ *  NOTES : -
+ *  COPYRIGHT : Copyright © 2021. All rights reserved.
+ */
 
 #ifndef NumbersSeries_hpp
 #define NumbersSeries_hpp
@@ -12,6 +15,10 @@
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <vector>
+#include <iterator>
+#include <algorithm>
+#include <random>
 
 using namespace std;
 
@@ -19,6 +26,9 @@ class NumbersSeriesCPP
 {
     public:
     double getTimeElapsedCPPForRandomListGeneration(int intFigure, int inCase);
+    double generateCPPShuffledList(int maxNumber);
+    void fisherYatesShuffling(int *arr, int n);
+    void shufflingFunction();
 };
 
-#endif /* NumbersSeriesCPP_hpp */
+#endif

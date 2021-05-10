@@ -1,13 +1,15 @@
-//
-//  NumbersSeriesWrapper.m
-//  SpeedEval
-//
-//  Created by GK on 09/05/2021.
-//
+/*
+ *  FILENAME : NumbersSeriesObjCPP.mm
+ *  APPID : eu.soleriant.SpeedEval
+ *  CREATION DATE : 2021, May 9th
+ *  AUTHOR : GK
+ *  CONTRIBUTORS : -
+ *  NOTES : -
+ *  COPYRIGHT : Copyright © 2021. All rights reserved.
+ */
 
 #import <Foundation/Foundation.h>
 #import "NumbersSeriesObjCPP.h"
-
 #import "NumbersSeriesCPP.hpp"
 
 @implementation NumbersSeriesObjCPP
@@ -23,7 +25,7 @@
     
     for(int i=0;i<intFigure;++i)
     {
-        bool includedYet;
+        bool includedYet = false;
         
         do
         {
@@ -43,12 +45,12 @@
                     {
                         randomArray[i] = rand() % (intFigure);
                         includedYet = false;
-                        if (i > 0){for (int j=0;j<i;++j){if (randomArray[i]==randomArray[j]){includedYet = true;}}}
+                        if (i > 0){for (int j=0;j<i;++j){if (randomArray[i]==randomArray[j]){includedYet = true;break;}}}
                         break;
                     }
                 default:
                     {
-                        includedYet = false;
+                        cout << "Default case" << endl;
                     }
             }
         }
@@ -75,6 +77,18 @@
 {
     NumbersSeriesCPP numbers;
     return numbers.getTimeElapsedCPPForRandomListGeneration(intFig, algo);
+}
+
+-(double)getTimeElapsedCPPForShuffledList:(int)maxNb
+{
+    NumbersSeriesCPP numbers;
+    return numbers.generateCPPShuffledList(maxNb);
+}
+
+-(void)shufflingFunction
+{
+    NumbersSeriesCPP numbers;
+    numbers.shufflingFunction();
 }
 
 @end

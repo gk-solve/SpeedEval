@@ -1,9 +1,12 @@
-//
-//  NumbersSeriesCPP.cpp
-//  SpeedEval
-//
-//  Created by GK on 10/05/2021.
-//
+/*
+ *  FILENAME : NumbersSeriesCPP.cpp
+ *  APPID : eu.soleriant.SpeedEval
+ *  CREATION DATE : 2021, May 10th
+ *  AUTHOR : GK
+ *  CONTRIBUTORS : -
+ *  NOTES : -
+ *  COPYRIGHT : Copyright © 2021. All rights reserved.
+ */
 
 #include "NumbersSeriesCPP.hpp"
 
@@ -11,7 +14,7 @@ double NumbersSeriesCPP::getTimeElapsedCPPForRandomListGeneration(int intFigure,
 {
     int randomArray[intFigure];
     int boolArray[intFigure];
-    
+    srand((unsigned int)time(NULL));
     
     /* START POINT */
     auto start = chrono::system_clock::now();
@@ -19,7 +22,7 @@ double NumbersSeriesCPP::getTimeElapsedCPPForRandomListGeneration(int intFigure,
     
     for(int i=0;i<intFigure;++i)
     {
-        bool includedYet;
+        bool includedYet = false;
         
         do
         {
@@ -39,18 +42,18 @@ double NumbersSeriesCPP::getTimeElapsedCPPForRandomListGeneration(int intFigure,
                     {
                         randomArray[i] = rand() % (intFigure);
                         includedYet = false;
-                        if (i > 0){for (int j=0;j<i;++j){if (randomArray[i]==randomArray[j]){includedYet = true;}}}
+                        if (i > 0){for (int j=0;j<i;++j){if (randomArray[i]==randomArray[j]){includedYet = true;break;}}}
                         break;
                     }
                 default:
                     {
-                        includedYet = false;
+                        cout << "Default case" << endl;
                     }
             }
         }
         while (includedYet == true);
         
-        //cout << "Random number : " << randomArray[i] << endl;
+        //cout << "CPP Random number : " << randomArray[i] << endl;
     }
     
     /* END POINT */
@@ -66,3 +69,74 @@ double NumbersSeriesCPP::getTimeElapsedCPPForRandomListGeneration(int intFigure,
     
     return elapsed_seconds.count();
 }
+
+double NumbersSeriesCPP::generateCPPShuffledList(int maxNumber)
+{
+    vector <int> straightArray;
+    for(int i=0;i<maxNumber;++i){straightArray.push_back(i);}
+    int straightInitialCount = int(straightArray.size());
+    
+    vector <int> randomArray;
+    
+    srand((unsigned int)time(NULL));
+    
+    /* START POINT */
+    auto start = chrono::system_clock::now();
+    cout << "CPP_Shuffle_START" << endl;
+    
+    for(int j=0;j<straightInitialCount;++j)
+    {
+        int randomPickedIndex = rand() % (int(straightArray.size()));
+        randomArray.push_back(straightArray[randomPickedIndex]);
+        straightArray.erase(straightArray.begin()+randomPickedIndex);
+    }
+    
+    /* END POINT */
+    auto end = chrono::system_clock::now();
+    cout << "CPP_Shuffle_END" << endl;
+    
+    /* ELAPSED TIME */
+    chrono::duration<double>elapsed_seconds = end-start;
+    //time_t end_time = chrono::system_clock::to_time_t(end);
+        
+    //cout << "FINISHED COMPUTATION AT " << ctime(&end_time) << endl;
+    //cout << "ELAPSED TIME :" << elapsed_seconds.count() << endl;//"s\n";
+    
+    int arr[10] = {0,1,2,3,4,5,6,7,8,9};
+    fisherYatesShuffling(arr, 10);
+    
+    return elapsed_seconds.count();
+}
+
+
+void NumbersSeriesCPP::fisherYatesShuffling(int *arr, int n)
+{
+    int a[n];
+    int ind[n];
+    
+    for (int i = 0; i<n; i++)
+        ind[i] = 0;
+    int index;
+    
+    for (int i=0;i<n;i++)
+    {
+        do{index = rand() % n;}
+        while (ind[index] != 0);
+        
+        ind[index] = 1;
+        a[i] = *(arr + index);
+    }
+    
+    for (int i = 0;i<n;i++){cout << a[i] << endl;}
+}
+
+void NumbersSeriesCPP::shufflingFunction()
+{
+    int arr[10] = {0,1,2,3,4,5,6,7,8,9};
+    
+    auto rng = default_random_engine{};
+    shuffle(begin(arr), end(arr), rng);
+    
+    for (int i = 0;i<10;i++){cout << "Shuffle : " << arr[i] << endl;}
+}
+

@@ -1,9 +1,12 @@
-//
-//  NumbersSeriesWrapper.h
-//  SpeedEval
-//
-//  Created by GK on 09/05/2021.
-//
+/*
+ *  FILENAME : NumbersSeriesObjCPP.h
+ *  APPID : eu.soleriant.SpeedEval
+ *  CREATION DATE : 2021, May 9th
+ *  AUTHOR : GK
+ *  CONTRIBUTORS : -
+ *  NOTES : -
+ *  COPYRIGHT : Copyright © 2021. All rights reserved.
+ */
 
 #import <Foundation/Foundation.h>
 
@@ -11,6 +14,8 @@
 
 -(double)getTimeElapsedOBJCPPForRandomListGeneration:(int)intFigure inCase:(int)algo;
 -(double)getTimeElapsedCPPForRandomListGeneration:(int)intFig inCase:(int)algo;
+-(double)getTimeElapsedCPPForShuffledList:(int)maxNb;
+-(void)shufflingFunction;
 
 @end
 

@@ -1,9 +1,12 @@
-//
-//  AppCommons.swift
-//  SpeedEval
-//
-//  Created by GK on 09/05/2021.
-//
+/*
+ *  FILENAME : AppCommons.swift
+ *  APPID : eu.soleriant.SpeedEval
+ *  CREATION DATE : 2021, May 9th
+ *  AUTHOR : GK
+ *  CONTRIBUTORS : -
+ *  NOTES : -
+ *  COPYRIGHT : Copyright © 2021. All rights reserved.
+ */
 
 import Foundation
 

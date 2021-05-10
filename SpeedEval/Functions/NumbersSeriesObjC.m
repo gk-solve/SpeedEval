@@ -1,9 +1,12 @@
-//
-//  NumbersSeriesObjC.m
-//  SpeedEval
-//
-//  Created by WESTOWN on 10/05/2021.
-//
+/*
+ *  FILENAME : NumbersSeriesObjC.m
+ *  APPID : eu.soleriant.SpeedEval
+ *  CREATION DATE : 2021, May 10th
+ *  AUTHOR : GK
+ *  CONTRIBUTORS : -
+ *  NOTES : -
+ *  COPYRIGHT : Copyright © 2021. All rights reserved.
+ */
 
 #import "NumbersSeriesObjC.h"
 
@@ -15,8 +18,8 @@
     NSMutableArray *boolArray = [[NSMutableArray alloc]init];
     
     /* START POINT */
-    NSLog(@"OBJC_START");
     NSDate *startDate = [NSDate now];
+    NSLog(@"OBJC_START date : %@",startDate);
     
     for(int i=0;i<intFigure;i++)
     {
@@ -28,7 +31,7 @@
             switch (algo)
             {
                 case 1:
-                    {
+
                         randomNumber = arc4random()%intFigure;
                         includedYet = false;
                         boolArray = [[NSMutableArray alloc]init];
@@ -47,9 +50,9 @@
                             if (sum > 0) {includedYet = true;} else {includedYet = false;}
                         
                         break;
-                    }
+
                 case 2:
-                    {
+
                         randomNumber = arc4random()%intFigure;
                         includedYet = false;
                         
@@ -58,28 +61,63 @@
                             for (int j=0;j<i;j++)
                             {
                                 NSInteger storedNumber = [[randomArray objectAtIndex:j]integerValue];
-                                if (storedNumber == randomNumber){includedYet = true;}
+                                if (storedNumber == randomNumber){includedYet = true;break;}
                             }
                         }
                         
                         break;
-                    }
-                default:
-                    {
+                        
+                case 3:
+                        randomNumber = arc4random()%intFigure;
                         includedYet = false;
-                    }
-                    
+                        if([randomArray containsObject:[NSNumber numberWithInteger:randomNumber]]){includedYet = true;}
+                        break;
+        
+                default:
+
+                        NSLog(@"Default case");
             }
         }
         while (includedYet == true);
         
         [randomArray addObject:[NSNumber numberWithInteger:randomNumber]];
-        NSLog(@"Obj-C : %li",(long)randomNumber);
+        //NSLog(@"Obj-C : %li",(long)randomNumber);
     }
     
     /* END POINT */
-    NSLog(@"OBJC_END");
     NSDate *endDate = [NSDate now];
+    NSLog(@"OBJC_END date : %@",endDate);
+    
+    NSTimeInterval timeBetween = [endDate timeIntervalSinceDate:startDate];
+    double interval = timeBetween / 1;
+        
+    return interval;
+}
+
+-(double)generateOBJCShuffledList:(int)maxnumber
+{
+    NSMutableArray *straightArray = [[NSMutableArray alloc]init];
+    for (int i=0;i<maxnumber;i++){[straightArray addObject:[NSNumber numberWithInteger:i]];}
+    NSInteger straightInitialCount = [straightArray count];
+    
+    NSMutableArray *randomArray = [[NSMutableArray alloc]init];
+    
+    /* START POINT */
+    NSDate *startDate = [NSDate now];
+    NSLog(@"OBJC_START date : %@",startDate);
+    
+        for (NSInteger j=0;j<straightInitialCount;j++)
+        {
+            NSInteger randomPickedIndex = (arc4random()%[straightArray count]);
+            [randomArray addObject:[straightArray objectAtIndex:randomPickedIndex]];
+            [straightArray removeObjectAtIndex:randomPickedIndex];
+            
+            j++;
+        }
+    
+    /* END POINT */
+    NSDate *endDate = [NSDate now];
+    NSLog(@"OBJC_END date : %@",endDate);
     
     NSTimeInterval timeBetween = [endDate timeIntervalSinceDate:startDate];
     double interval = timeBetween / 1;
