@@ -4,7 +4,8 @@
  *  CREATION DATE : 2021, May 9th
  *  AUTHOR : GK
  *  CONTRIBUTORS : -
- *  NOTES : -
+ *  NOTES : PURPOSE > Testing the speed of the Fisher-Yates algorithm to shuffle an array of 100.000 integers,
+ *                    through 3 different languages: C++/ObjC++, ObjC, Swift
  *  COPYRIGHT : Copyright © 2021. All rights reserved.
  */
 
@@ -16,10 +17,10 @@ class MainViewController: UIViewController {
 
     let activity = UIActivityIndicatorView()
     
-    let CaseExtraOBJC = UILabel()
-    let CaseExtraSWIFT = UILabel()
-    let CaseExtraCPP = UILabel()
-    let CaseExtraObjCPP = UILabel()
+    let CaseResultCPP = UILabel()
+    let CaseResultObjCPP = UILabel()
+    let CaseResultOBJC = UILabel()
+    let CaseResultSWIFT = UILabel()
     
     override func viewDidLoad()
     {
@@ -35,102 +36,138 @@ class MainViewController: UIViewController {
     
     func createInterface()
     {
-        /* Background color */
-        self.view.backgroundColor = UIColor.lightGray
+
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
         
-        var rowRank:CGFloat = 3
-        let dim:CGFloat = 30
+        /* BASICS */
+        self.view.backgroundColor = UIColor.lightGray
+        let dim:CGFloat = self.view.frame.size.height/25
+        let fontDim:CGFloat = 0.60*dim
         
         /*-------------------------------------------------------------------------------------------------------------------------------*/
+        
+        /* INTRO */
+        let Intro = UILabel()
+        Intro.frame = CGRect(x:dim, y:0, width:self.view.frame.size.width-2*dim, height:self.view.center.y - 5*dim)
+        Intro.textAlignment = NSTextAlignment.center
+        Intro.text = "PURPOSE\rTesting the speed of the Fisher-Yates algorithm to shuffle an array of 100.000 integers, through 3 different languages:\rC++/ObjC++, ObjC, Swift"
+        Intro.font = UIFont(name: "Verdana", size: 0.8*fontDim)
+        Intro.textColor = UIColor.black
+        Intro.numberOfLines = 0
+        self.view.addSubview(Intro)
+        
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+        
+        /* CASE : C++ */
+        let CaseCPP = UILabel()
+        CaseCPP.frame = CGRect(x:dim, y:self.view.center.y - 5*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
+        CaseCPP.textAlignment = NSTextAlignment.center
+        CaseCPP.text = "C++"
+        CaseCPP.font = UIFont(name: "Verdana", size: fontDim)
+        CaseCPP.textColor = UIColor.white
+        self.view.addSubview(CaseCPP)
+        
+        CaseResultCPP.frame = CGRect(x:dim, y:self.view.center.y - 4*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
+        CaseResultCPP.textAlignment = NSTextAlignment.center
+        CaseResultCPP.font = UIFont(name: "Verdana", size: fontDim)
+        self.view.addSubview(CaseResultCPP)
+        
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+        
+        /* CASE : OBJC++ */
+        let CaseObjCPP = UILabel()
+        CaseObjCPP.frame = CGRect(x:dim, y:self.view.center.y - 2*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
+        CaseObjCPP.textAlignment = NSTextAlignment.center
+        CaseObjCPP.text = "ObjC++"
+        CaseObjCPP.font = UIFont(name: "Verdana", size: fontDim)
+        CaseObjCPP.textColor = UIColor.white
+        self.view.addSubview(CaseObjCPP)
+        
+        CaseResultObjCPP.frame = CGRect(x:dim, y:self.view.center.y - 1*dim, width:self.view.frame.size.width-2*20, height:1*dim)
+        CaseResultObjCPP.textAlignment = NSTextAlignment.center
+        CaseResultObjCPP.font = UIFont(name: "Verdana", size: fontDim)
+        self.view.addSubview(CaseResultObjCPP)
+        
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+        
+        /* CASE : OBJC */
+        let ObjC = UILabel()
+        ObjC.frame = CGRect(x:dim, y:self.view.center.y + 1*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
+        ObjC.textAlignment = NSTextAlignment.center
+        ObjC.text = "ObjC"
+        ObjC.font = UIFont(name: "Verdana", size: fontDim)
+        ObjC.textColor = UIColor.white
+        self.view.addSubview(ObjC)
+        
+        CaseResultOBJC.frame = CGRect(x:dim, y:self.view.center.y + 2*dim, width:self.view.frame.size.width-2*20, height:dim)
+        CaseResultOBJC.textAlignment = NSTextAlignment.center
+        CaseResultOBJC.font = UIFont(name: "Verdana", size: fontDim)
+        self.view.addSubview(CaseResultOBJC)
+        
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+    
+        /* CASE : SWIFT */
+        let Swift = UILabel()
+        Swift.frame = CGRect(x:dim, y:self.view.center.y + 4*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
+        Swift.textAlignment = NSTextAlignment.center
+        Swift.text = "Swift"
+        Swift.font = UIFont(name: "Verdana", size: fontDim)
+        Swift.textColor = UIColor.white
+        self.view.addSubview(Swift)
+        
+        CaseResultSWIFT.frame = CGRect(x:dim, y:self.view.center.y + 5*dim, width:self.view.frame.size.width-2*20, height:1*dim)
+        CaseResultSWIFT.textAlignment = NSTextAlignment.center
+        CaseResultSWIFT.font = UIFont(name: "Verdana", size: fontDim)
+        self.view.addSubview(CaseResultSWIFT)
+    
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+        /*-------------------------------------------------------------------------------------------------------------------------------*/
+        
+        activity.frame = CGRect(x:0,y:self.view.frame.height - 3*dim, width:dim, height:dim)
+        activity.hidesWhenStopped = true
+        self.view.addSubview(activity)
+        
         /*-------------------------------------------------------------------------------------------------------------------------------*/
         
         let updateButton = UIButton()
-        updateButton.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
+        updateButton.frame = CGRect(x:dim, y:self.view.frame.height - 3.5*dim, width:self.view.frame.size.width-2*dim, height:1.5*dim)
         updateButton.setBackgroundImage(UIImage(named: "Bkg_Normal.png"), for: UIControl.State.normal)
         updateButton.setBackgroundImage(UIImage(named: "Bkg_Selected.png"), for: UIControl.State.highlighted)
-        updateButton.setTitle("Run algorithms", for: UIControl.State.normal)
+        updateButton.setTitle("Run Fisher-Yates again", for: UIControl.State.normal)
+        updateButton.setTitleColor(UIColor(named: "NewWhite"), for: UIControl.State.normal) /* Toogle dark mode : Cmd + Shift + A */
+        updateButton.addTarget(self, action: #selector(generateListsAndStats), for: UIControl.Event.touchUpInside)
         self.view.addSubview(updateButton)
         
-        updateButton.addTarget(self, action: #selector(generateListsAndStats), for: UIControl.Event.touchUpInside)
-        
-        activity.frame = CGRect(x:0,y:rowRank*dim, width:dim, height:dim)
-        activity.hidesWhenStopped = true
-        self.view.addSubview(activity)
-                
         /*-------------------------------------------------------------------------------------------------------------------------------*/
-        /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
-        rowRank = rowRank + 2
-        
-        /* CASE3 : OBJC */
-        CaseExtraOBJC.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
-        CaseExtraOBJC.textAlignment = NSTextAlignment.left
-        self.view.addSubview(CaseExtraOBJC)
-        
-        /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
-        rowRank = rowRank + 1
-        
-        /* CASE3 : SWIFT */
-        CaseExtraSWIFT.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
-        CaseExtraSWIFT.textAlignment = NSTextAlignment.left
-        self.view.addSubview(CaseExtraSWIFT)
-        
-        /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
-        rowRank = rowRank + 1
-        
-        /* CASE3 : SWIFT */
-        CaseExtraCPP.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
-        CaseExtraCPP.textAlignment = NSTextAlignment.left
-        self.view.addSubview(CaseExtraCPP)
-        
-        /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
-        rowRank = rowRank + 1
-        
-        /* CASE3 : OBJCPP */
-        CaseExtraObjCPP.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
-        CaseExtraObjCPP.textAlignment = NSTextAlignment.left
-        self.view.addSubview(CaseExtraObjCPP)
-        
         /*-------------------------------------------------------------------------------------------------------------------------------*/
     }
         
     @objc func generateListsAndStats()
     {
-        activity.startAnimating()
-        
         let topInt:Int = 100000
 
-        //-------------------------------------------------------------------------------------------------------------------------------//
-               
-        // CASE3 : OBJC //
-        
-        let objcElapsedTimeExtra:Double = Double(NumbersSeriesObjC().fisherYatesAlgoObjC(Int32(topInt)))
-        CaseExtraOBJC.text = String(format: "CaseE : %.6f sec | OBJC", objcElapsedTimeExtra)
+        activity.startAnimating()
         
         //-------------------------------------------------------------------------------------------------------------------------------//
-                
-        // CASE3 : SWIFT //
-        
-        let swiftElapsedTimeExtra:Double = Double(NumbersSeriesSwift().fisherYatesAlgoSWIFT(maxnumber: topInt))
-        CaseExtraSWIFT.text = String(format: "CaseE : %.6f sec | SWIFT", swiftElapsedTimeExtra)
+        /* C++ */
+        let cppElapsedTimeResult:Double = Double(NumbersSeriesObjCPP().fisherYatesAlgoCPP(Int32(topInt)))
+        CaseResultCPP.text = String(format: "%.6f sec (ref. time)", cppElapsedTimeResult)
         
         //-------------------------------------------------------------------------------------------------------------------------------//
-        
-        // CASE3 : CPP //
-        
-        let cppElapsedTimeExtra:Double = Double(NumbersSeriesObjCPP().fisherYatesAlgoCPP(Int32(topInt)))
-        CaseExtraCPP.text = String(format: "CaseE : %.6f sec | CPP", cppElapsedTimeExtra)
+        /* OBJC++ */
+        let objcppElapsedTimeResult:Double = Double(NumbersSeriesObjCPP().fisherYatesAlgoObjCPP(Int32(topInt)))
+        CaseResultObjCPP.text = String(format: "%.6f sec ( x %.2f )", objcppElapsedTimeResult, objcppElapsedTimeResult/cppElapsedTimeResult)
         
         //-------------------------------------------------------------------------------------------------------------------------------//
+        /* OBJC */
+        let objcElapsedTimeResult:Double = Double(NumbersSeriesObjC().fisherYatesAlgoObjC(Int32(topInt)))
+        CaseResultOBJC.text = String(format: "%.6f sec ( x %.2f )", objcElapsedTimeResult, objcElapsedTimeResult/cppElapsedTimeResult)
         
-        // CASE3 : OBJCPP //
-        
-        let objcppElapsedTimeExtra:Double = Double(NumbersSeriesObjCPP().fisherYatesAlgoObjCPP(Int32(topInt)))
-        CaseExtraObjCPP.text = String(format: "CaseE : %.6f sec | OBJCPP", objcppElapsedTimeExtra)
-        
+        //-------------------------------------------------------------------------------------------------------------------------------//
+        /* SWIFT */
+        let swiftElapsedTimeResult:Double = Double(NumbersSeriesSwift().fisherYatesAlgoSWIFT(maxnumber: topInt))
+        CaseResultSWIFT.text = String(format: "%.6f sec ( x %.2f )", swiftElapsedTimeResult, swiftElapsedTimeResult/cppElapsedTimeResult)
+    
         //-------------------------------------------------------------------------------------------------------------------------------//
         
         activity.stopAnimating()

@@ -196,13 +196,13 @@
 		D845D9872647F02800757434 /* Functions */ = {
 			isa = PBXGroup;
 			children = (
-				D850157826485F6300936C81 /* NumbersSeriesSwift.swift */,
+				D82F336F26494E4C000D3B17 /* NumbersSeriesCPP.hpp */,
+				D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */,
 				D850156B26485CB100936C81 /* NumbersSeriesObjCPP.h */,
 				D850156426485C7F00936C81 /* NumbersSeriesObjCPP.mm */,
 				D82F337926495D09000D3B17 /* NumbersSeriesObjC.h */,
 				D82F337A26495D09000D3B17 /* NumbersSeriesObjC.m */,
-				D82F336F26494E4C000D3B17 /* NumbersSeriesCPP.hpp */,
-				D82F336E26494E4C000D3B17 /* NumbersSeriesCPP.cpp */,
+				D850157826485F6300936C81 /* NumbersSeriesSwift.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";

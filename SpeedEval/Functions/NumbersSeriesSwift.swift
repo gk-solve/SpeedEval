@@ -35,6 +35,7 @@ class NumbersSeriesSwift
         /* END POINT */
         //let endTime = Date()
         print ("SWIFT_FisherYates_END")
+        /*-----------------------------------------*/
         
         return Date().timeIntervalSince(startTime)
     }
