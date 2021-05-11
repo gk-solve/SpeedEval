@@ -12,8 +12,6 @@
 
 @interface NumbersSeriesObjC : NSObject
 
--(double)getTimeElapsedOBJCForRandomListGeneration:(int)intFigure inCase:(int)algo;
--(double)generateOBJCShuffledList:(int)maxnumber;
 -(double)fisherYatesAlgoObjC:(int)maxnumber;
 
 @end

@@ -25,10 +25,8 @@ using namespace std;
 class NumbersSeriesCPP
 {
     public:
-    double getTimeElapsedCPPForRandomListGeneration(int intFigure, int inCase);
-    double generateCPPShuffledList(int maxNumber);
     double fisherYatesAlgoCPP(int n);
-    void shufflingFunctionCPP(int n);
+
 };
 
 #endif

@@ -12,10 +12,7 @@
 
 @interface NumbersSeriesObjCPP: NSObject
 
--(double)getTimeElapsedOBJCPPForRandomListGeneration:(int)intFigure inCase:(int)algo;
--(double)getTimeElapsedCPPForRandomListGeneration:(int)intFig inCase:(int)algo;
--(double)getTimeElapsedCPPForShuffledList:(int)maxNb;
--(void)shufflingFunctionCPP:(int)maxNb;
+-(double)fisherYatesAlgoObjCPP:(int)maxNb;
 -(double)fisherYatesAlgoCPP:(int)maxNb;
 
 @end
