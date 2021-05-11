@@ -85,10 +85,16 @@
     return numbers.generateCPPShuffledList(maxNb);
 }
 
--(void)shufflingFunction
+-(void)shufflingFunctionCPP:(int)maxNb
 {
     NumbersSeriesCPP numbers;
-    numbers.shufflingFunction();
+    numbers.shufflingFunctionCPP(maxNb);
+}
+
+-(double)fisherYatesAlgoCPP:(int)maxNb
+{
+    NumbersSeriesCPP numbers;
+    return numbers.fisherYatesAlgoCPP(maxNb);
 }
 
 @end

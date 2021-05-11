@@ -100,4 +100,32 @@ class NumbersSeriesSwift
                 
         return Date().timeIntervalSince(startTime)
     }
+    
+    func fisherYatesAlgoSWIFT(maxnumber : Int)->Double
+    {
+        /*-----------------------------------------*/
+        /* START POINT */
+        let startTime = Date()
+        print ("SWIFT_START")
+        /*-----------------------------------------*/
+        
+        var straightArray:[Int] = []
+        for i:Int in 0..<maxnumber{straightArray.append(i)}
+        
+        for i in (1 ... maxnumber-1).reversed()
+        {
+            let j:Int = Int.random(in: 0..<i+1)
+            straightArray.swapAt(i, j)
+        }
+        
+        //let endTime = Date()
+        
+        //for index in straightArray{print("shuffle (Fisher-Yates) - SWIFT : \(straightArray[index])")}
+        
+        /*-----------------------------------------*/
+        /* END POINT */
+        print ("SWIFT_END")
+        
+        return Date().timeIntervalSince(startTime)
+    }
 }

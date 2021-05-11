@@ -14,6 +14,8 @@ import CoreGraphics
 
 class MainViewController: UIViewController {
 
+    let activity = UIActivityIndicatorView()
+    
     let CaseOneOBJCPP = UILabel()
     let CaseOneOBJC = UILabel()
     let CaseOneCPP = UILabel()
@@ -36,9 +38,7 @@ class MainViewController: UIViewController {
 
         self.createInterface()
         self.generateListsAndStats()
-        
-        NumbersSeriesObjCPP().shufflingFunction()
-        
+            
         /*-------------------------------------------------------------------------------------------------------------------------------*/
     }
     
@@ -48,18 +48,23 @@ class MainViewController: UIViewController {
         self.view.backgroundColor = UIColor.lightGray
         
         var rowRank:CGFloat = 3
-        let lineHeight:CGFloat = 30
+        let dim:CGFloat = 30
         
         /*-------------------------------------------------------------------------------------------------------------------------------*/
         /*-------------------------------------------------------------------------------------------------------------------------------*/
         
         let updateButton = UIButton()
-        updateButton.frame = CGRect(x:15, y:rowRank*lineHeight, width:self.view.frame.size.width-2*15, height:1*lineHeight)
-        updateButton.layer.backgroundColor = UIColor.blue.cgColor
+        updateButton.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
+        updateButton.setBackgroundImage(UIImage(named: "Bkg_Normal.png"), for: UIControl.State.normal)
+        updateButton.setBackgroundImage(UIImage(named: "Bkg_Selected.png"), for: UIControl.State.highlighted)
         updateButton.setTitle("Run algorithms", for: UIControl.State.normal)
         self.view.addSubview(updateButton)
         
         updateButton.addTarget(self, action: #selector(generateListsAndStats), for: UIControl.Event.touchUpInside)
+        
+        activity.frame = CGRect(x:0,y:rowRank*dim, width:dim, height:dim)
+        activity.hidesWhenStopped = true
+        self.view.addSubview(activity)
         
         /*-------------------------------------------------------------------------------------------------------------------------------*/
         /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -67,7 +72,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 2
         
         /* CASE 1 : OBJCPP */
-        CaseOneOBJCPP.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseOneOBJCPP.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseOneOBJCPP.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseOneOBJCPP)
                 
@@ -76,7 +81,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 1
         
         /* CASE 1 : OBJC */
-        CaseOneOBJC.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseOneOBJC.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseOneOBJC.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseOneOBJC)
         
@@ -85,7 +90,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 1
         
         /* CASE 1 : CPP */
-        CaseOneCPP.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseOneCPP.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseOneCPP.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseOneCPP)
                 
@@ -94,7 +99,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 1
         
         /* CASE 1 : SWIFT */
-        CaseOneSWIFT.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseOneSWIFT.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseOneSWIFT.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseOneSWIFT)
         
@@ -104,7 +109,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 2
         
         /* CASE2 : OBJCPP */
-        CaseTwoOBJCPP.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseTwoOBJCPP.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseTwoOBJCPP.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseTwoOBJCPP)
                 
@@ -113,7 +118,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 1
         
         /* CASE 2 : OBJC */
-        CaseTwoOBJC.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseTwoOBJC.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseTwoOBJC.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseTwoOBJC)
         
@@ -122,7 +127,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 1
         
         /* CASE2 : CPP */
-        CaseTwoCPP.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseTwoCPP.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseTwoCPP.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseTwoCPP)
                 
@@ -131,7 +136,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 1
         
         /* CASE2 : SWIFT */
-        CaseTwoSWIFT.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseTwoSWIFT.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseTwoSWIFT.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseTwoSWIFT)
         
@@ -141,7 +146,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 2
         
         /* CASE3 : OBJC */
-        CaseThreeOBJC.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseThreeOBJC.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseThreeOBJC.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseThreeOBJC)
         
@@ -150,7 +155,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 1
         
         /* CASE3 : SWIFT */
-        CaseThreeSWIFT.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseThreeSWIFT.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseThreeSWIFT.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseThreeSWIFT)
         
@@ -160,7 +165,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 2
         
         /* CASE3 : OBJC */
-        CaseExtraOBJC.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseExtraOBJC.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseExtraOBJC.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseExtraOBJC)
         
@@ -169,7 +174,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 1
         
         /* CASE3 : SWIFT */
-        CaseExtraSWIFT.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseExtraSWIFT.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*20, height:1*dim)
         CaseExtraSWIFT.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseExtraSWIFT)
         
@@ -178,7 +183,7 @@ class MainViewController: UIViewController {
         rowRank = rowRank + 1
         
         /* CASE3 : SWIFT */
-        CaseExtraCPP.frame = CGRect(x:20, y:rowRank*lineHeight, width:self.view.frame.size.width-2*20, height:1*lineHeight)
+        CaseExtraCPP.frame = CGRect(x:dim, y:rowRank*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
         CaseExtraCPP.textAlignment = NSTextAlignment.left
         self.view.addSubview(CaseExtraCPP)
         
@@ -187,7 +192,9 @@ class MainViewController: UIViewController {
         
     @objc func generateListsAndStats()
     {
-        let topInt:Int = 10000
+        activity.startAnimating()
+        
+        let topInt:Int = 100000
         let all:Bool = false
         
         if all == true
@@ -272,24 +279,26 @@ class MainViewController: UIViewController {
                
         // CASE3 : OBJC //
         
-        let objcElapsedTimeExtra:Double = Double(NumbersSeriesObjC().generateOBJCShuffledList(Int32(topInt)))
+        let objcElapsedTimeExtra:Double = Double(NumbersSeriesObjC().fisherYatesAlgoObjC(Int32(topInt)))
         CaseExtraOBJC.text = String(format: "CaseE : %.6f sec | OBJC", objcElapsedTimeExtra)
         
         //-------------------------------------------------------------------------------------------------------------------------------//
         
         // CASE3 : SWIFT //
         
-        let swiftElapsedTimeExtra:Double = Double(NumbersSeriesSwift().generateSWIFTShuffledList(maxnumber: topInt))
+        let swiftElapsedTimeExtra:Double = Double(NumbersSeriesSwift().fisherYatesAlgoSWIFT(maxnumber: topInt))
         CaseExtraSWIFT.text = String(format: "CaseE : %.6f sec | SWIFT", swiftElapsedTimeExtra)
         
         //-------------------------------------------------------------------------------------------------------------------------------//
         
         // CASE3 : CPP //
         
-        let cppElapsedTimeExtra:Double = Double(NumbersSeriesObjCPP().getTimeElapsedCPP(forShuffledList: Int32(topInt)))
+        let cppElapsedTimeExtra:Double = Double(NumbersSeriesObjCPP().fisherYatesAlgoCPP(Int32(topInt)))
         CaseExtraCPP.text = String(format: "CaseE : %.6f sec | CPP", cppElapsedTimeExtra)
         
         //-------------------------------------------------------------------------------------------------------------------------------//
+        
+        activity.stopAnimating()
     }
 }
 

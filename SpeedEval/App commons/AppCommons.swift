@@ -21,5 +21,4 @@ class AppCommons
     
     static let shared = AppCommons()
     private init(){}
-    
 }

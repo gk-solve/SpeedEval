@@ -27,8 +27,8 @@ class NumbersSeriesCPP
     public:
     double getTimeElapsedCPPForRandomListGeneration(int intFigure, int inCase);
     double generateCPPShuffledList(int maxNumber);
-    void fisherYatesShuffling(int *arr, int n);
-    void shufflingFunction();
+    double fisherYatesAlgoCPP(int n);
+    void shufflingFunctionCPP(int n);
 };
 
 #endif
