@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
         /*-------------------------------------------------------------------------------------------------------------------------------*/
         
         /* BASICS */
-        self.view.backgroundColor = UIColor.lightGray
+        self.view.backgroundColor = UIColor(named: "SpecGray")
         let dim:CGFloat = self.view.frame.size.height/25
         let fontDim:CGFloat = 0.60*dim
         
@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
         Intro.textAlignment = NSTextAlignment.center
         Intro.text = "PURPOSE\rTesting the speed of the Fisher-Yates algorithm to shuffle an array of 100.000 integers, through 3 different languages:\rC++/ObjC++, ObjC, Swift"
         Intro.font = UIFont(name: "Verdana", size: 0.8*fontDim)
-        Intro.textColor = UIColor.black
+        Intro.textColor = UIColor(named: "SpecBlack") /* Toogle dark mode : Cmd + Shift + A */
         Intro.numberOfLines = 0
         self.view.addSubview(Intro)
         
@@ -64,12 +64,16 @@ class MainViewController: UIViewController {
         CaseCPP.textAlignment = NSTextAlignment.center
         CaseCPP.text = "C++"
         CaseCPP.font = UIFont(name: "Verdana", size: fontDim)
-        CaseCPP.textColor = UIColor.white
+        CaseCPP.textColor = UIColor(named: "SpecWhite")
         self.view.addSubview(CaseCPP)
         
-        CaseResultCPP.frame = CGRect(x:dim, y:self.view.center.y - 4*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
+        CaseResultCPP.frame = CGRect(x:dim, y:self.view.center.y - 4*dim + 5, width:self.view.frame.size.width-2*dim, height:1*dim)
         CaseResultCPP.textAlignment = NSTextAlignment.center
         CaseResultCPP.font = UIFont(name: "Verdana", size: fontDim)
+        CaseResultCPP.textColor = UIColor(named: "SpecBlack")
+        CaseResultCPP.layer.borderColor = UIColor.white.cgColor
+        CaseResultCPP.layer.borderWidth = 2
+        CaseResultCPP.layer.cornerRadius = 10
         self.view.addSubview(CaseResultCPP)
         
         /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -80,12 +84,16 @@ class MainViewController: UIViewController {
         CaseObjCPP.textAlignment = NSTextAlignment.center
         CaseObjCPP.text = "ObjC++"
         CaseObjCPP.font = UIFont(name: "Verdana", size: fontDim)
-        CaseObjCPP.textColor = UIColor.white
+        CaseObjCPP.textColor = UIColor(named: "SpecWhite")
         self.view.addSubview(CaseObjCPP)
         
-        CaseResultObjCPP.frame = CGRect(x:dim, y:self.view.center.y - 1*dim, width:self.view.frame.size.width-2*20, height:1*dim)
+        CaseResultObjCPP.frame = CGRect(x:dim, y:self.view.center.y - 1*dim + 5, width:self.view.frame.size.width-2*dim, height:1*dim)
         CaseResultObjCPP.textAlignment = NSTextAlignment.center
         CaseResultObjCPP.font = UIFont(name: "Verdana", size: fontDim)
+        CaseResultObjCPP.textColor = UIColor(named: "SpecBlack")
+        CaseResultObjCPP.layer.borderColor = UIColor.white.cgColor
+        CaseResultObjCPP.layer.borderWidth = 2
+        CaseResultObjCPP.layer.cornerRadius = 10
         self.view.addSubview(CaseResultObjCPP)
         
         /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -96,12 +104,16 @@ class MainViewController: UIViewController {
         ObjC.textAlignment = NSTextAlignment.center
         ObjC.text = "ObjC"
         ObjC.font = UIFont(name: "Verdana", size: fontDim)
-        ObjC.textColor = UIColor.white
+        ObjC.textColor = UIColor(named: "SpecWhite")
         self.view.addSubview(ObjC)
         
-        CaseResultOBJC.frame = CGRect(x:dim, y:self.view.center.y + 2*dim, width:self.view.frame.size.width-2*20, height:dim)
+        CaseResultOBJC.frame = CGRect(x:dim, y:self.view.center.y + 2*dim + 5, width:self.view.frame.size.width-2*dim, height:dim)
         CaseResultOBJC.textAlignment = NSTextAlignment.center
         CaseResultOBJC.font = UIFont(name: "Verdana", size: fontDim)
+        CaseResultOBJC.textColor = UIColor(named: "SpecBlack")
+        CaseResultOBJC.layer.borderColor = UIColor.white.cgColor
+        CaseResultOBJC.layer.borderWidth = 2
+        CaseResultOBJC.layer.cornerRadius = 10
         self.view.addSubview(CaseResultOBJC)
         
         /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -112,12 +124,16 @@ class MainViewController: UIViewController {
         Swift.textAlignment = NSTextAlignment.center
         Swift.text = "Swift"
         Swift.font = UIFont(name: "Verdana", size: fontDim)
-        Swift.textColor = UIColor.white
+        Swift.textColor = UIColor(named: "SpecWhite")
         self.view.addSubview(Swift)
         
-        CaseResultSWIFT.frame = CGRect(x:dim, y:self.view.center.y + 5*dim, width:self.view.frame.size.width-2*20, height:1*dim)
+        CaseResultSWIFT.frame = CGRect(x:dim, y:self.view.center.y + 5*dim + 5, width:self.view.frame.size.width-2*dim, height:1*dim)
         CaseResultSWIFT.textAlignment = NSTextAlignment.center
         CaseResultSWIFT.font = UIFont(name: "Verdana", size: fontDim)
+        CaseResultSWIFT.textColor = UIColor(named: "SpecBlack")
+        CaseResultSWIFT.layer.borderColor = UIColor.white.cgColor
+        CaseResultSWIFT.layer.borderWidth = 2
+        CaseResultSWIFT.layer.cornerRadius = 10
         self.view.addSubview(CaseResultSWIFT)
     
         /*-------------------------------------------------------------------------------------------------------------------------------*/
@@ -134,7 +150,7 @@ class MainViewController: UIViewController {
         updateButton.setBackgroundImage(UIImage(named: "Bkg_Normal.png"), for: UIControl.State.normal)
         updateButton.setBackgroundImage(UIImage(named: "Bkg_Selected.png"), for: UIControl.State.highlighted)
         updateButton.setTitle("Run Fisher-Yates again", for: UIControl.State.normal)
-        updateButton.setTitleColor(UIColor(named: "NewWhite"), for: UIControl.State.normal) /* Toogle dark mode : Cmd + Shift + A */
+        updateButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
         updateButton.addTarget(self, action: #selector(generateListsAndStats), for: UIControl.Event.touchUpInside)
         self.view.addSubview(updateButton)
         

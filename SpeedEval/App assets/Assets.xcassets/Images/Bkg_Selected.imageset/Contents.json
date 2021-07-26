@@ -3,6 +3,16 @@
     {
       "filename" : "Bkg_Selected.png",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "Bkg_Selected-1.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
