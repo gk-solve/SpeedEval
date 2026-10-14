@@ -2,9 +2,12 @@
  *  FILENAME : NumbersSeriesObjCPP.mm
  *  APPID : eu.soleriant.SpeedEval
  *  CREATION DATE : 2021, May 9th
+ *  LAST UPDATE : 2026, October 13th
  *  AUTHOR : GK
  *  CONTRIBUTORS : -
- *  NOTES : -
+ *  NOTES : The ObjC++ variant is deliberately the same code as the C++ one, compiled by the same clang.
+ *          It acts as a control : any gap between "C++" and "ObjC++" is measurement noise, which gives
+ *          a sense of how much the other gaps can be trusted.
  *  COPYRIGHT : Copyright © 2021. All rights reserved.
  */
 
@@ -12,43 +15,42 @@
 #import "NumbersSeriesObjCPP.h"
 #import "NumbersSeriesCPP.hpp"
 
+#include <time.h>
+#include <utility>
+#include <vector>
+
 @implementation NumbersSeriesObjCPP
 
--(double)fisherYatesAlgoObjCPP:(int)maxNb
++(double)fisherYatesAlgoObjCPP:(int)count seed:(uint64_t)seed checksum:(uint64_t *)checksum
 {
+    SplitMix64 rng(seed);
+
     /*-----------------------------------------*/
     /* START POINT */
-    auto start = chrono::system_clock::now();
-    cout << "ObjCPP_FisherYates_START" << endl;
+    const uint64_t start = clock_gettime_nsec_np(CLOCK_UPTIME_RAW);
     /*-----------------------------------------*/
-    
-    int straightArray[maxNb];
-    for(int k=0;k<maxNb;++k){straightArray[k] = k;}
-    
-    srand((unsigned int)time(NULL));
-    
-    for (int i = maxNb-1; i != 0; i--)
+
+    std::vector<int> straightArray(count);
+    for (int k = 0; k < count; ++k) { straightArray[k] = k; }
+
+    for (int i = count - 1; i > 0; --i)
     {
-        int j = rand() % (i - 0 + 1);
-        swap(straightArray[i],straightArray[j]);
+        const int j = (int)(rng.next() % (uint64_t)(i + 1));
+        std::swap(straightArray[i], straightArray[j]);
     }
-    
-    //for (int i = 0;i<maxNb;++i){cout << "Shuffle (fisher yates) - ObjCPP : " << straightArray[i] << endl;}
-    
+
     /*-----------------------------------------*/
     /* END POINT */
-    auto end = chrono::system_clock::now();
-    cout << "ObjCPP_FisherYates_END" << endl;
-    chrono::duration<double>elapsed_seconds = end-start;
+    const uint64_t end = clock_gettime_nsec_np(CLOCK_UPTIME_RAW);
     /*-----------------------------------------*/
 
-    return elapsed_seconds.count();
+    *checksum = shuffleChecksum(straightArray.data(), straightArray.size());
+    return (double)(end - start) / 1e9;
 }
 
--(double)fisherYatesAlgoCPP:(int)maxNb
++(double)fisherYatesAlgoCPP:(int)count seed:(uint64_t)seed checksum:(uint64_t *)checksum
 {
-    NumbersSeriesCPP numbers;
-    return numbers.fisherYatesAlgoCPP(maxNb);
+    return NumbersSeriesCPP::fisherYatesAlgoCPP(count, seed, *checksum);
 }
 
 @end

@@ -2,192 +2,199 @@
  *  FILENAME : MainViewController.swift
  *  APPID : eu.soleriant.SpeedEval
  *  CREATION DATE : 2021, May 9th
+ *  LAST UPDATE : 2026, October 13th
  *  AUTHOR : GK
  *  CONTRIBUTORS : -
- *  NOTES : PURPOSE > Testing the speed of the Fisher-Yates algorithm to shuffle an array of 100.000 integers,
+ *  NOTES : PURPOSE > Testing the speed of the Fisher-Yates algorithm to shuffle an array of 1.000.000 integers,
  *                    through 3 different languages: C++/ObjC++, ObjC, Swift
+ *          The interface is built in code with Auto Layout (stack views), so it adapts to every screen size,
+ *          orientation and Dynamic Type setting. The benchmark itself runs on a background queue.
  *  COPYRIGHT : Copyright © 2021. All rights reserved.
  */
 
-import Foundation
 import UIKit
-import CoreGraphics
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController
+{
+    private let activity = UIActivityIndicatorView(style: .medium)
+    private let runButton = UIButton(type: .custom)
+    private let statusLabel = UILabel()
+    private var resultLabels: [Implementation: UILabel] = [:]
 
-    let activity = UIActivityIndicatorView()
-    
-    let CaseResultCPP = UILabel()
-    let CaseResultObjCPP = UILabel()
-    let CaseResultOBJC = UILabel()
-    let CaseResultSWIFT = UILabel()
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-       
+
         /*-------------------------------------------------------------------------------------------------------------------------------*/
 
         self.createInterface()
-        self.generateListsAndStats()
-                    
+        self.runBenchmark()
+
         /*-------------------------------------------------------------------------------------------------------------------------------*/
     }
-    
+
+    /*-----------------------------------------------------------------------------------------------------------------------------------*/
+    /* INTERFACE */
+
+    /// Verdana scaled with the user's Dynamic Type setting.
+    private func verdana(_ size: CGFloat) -> UIFont
+    {
+        let base = UIFont(name: "Verdana", size: size) ?? .systemFont(ofSize: size)
+        return UIFontMetrics(forTextStyle: .body).scaledFont(for: base)
+    }
+
+    private func makeLabel(text: String? = nil, size: CGFloat, color: String) -> UILabel
+    {
+        let label = UILabel()
+        label.text = text
+        label.font = verdana(size)
+        label.adjustsFontForContentSizeCategory = true
+        label.textColor = UIColor(named: color) /* Toggle dark mode in the simulator : Cmd + Shift + A */
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }
+
     func createInterface()
     {
-
         /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
+
         /* BASICS */
         self.view.backgroundColor = UIColor(named: "SpecGray")
-        let dim:CGFloat = self.view.frame.size.height/25
-        let fontDim:CGFloat = 0.60*dim
-        
+
         /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
+
         /* INTRO */
-        let Intro = UILabel()
-        Intro.frame = CGRect(x:dim, y:0, width:self.view.frame.size.width-2*dim, height:self.view.center.y - 5*dim)
-        Intro.textAlignment = NSTextAlignment.center
-        Intro.text = "PURPOSE\rTesting the speed of the Fisher-Yates algorithm to shuffle an array of 100.000 integers, through 3 different languages:\rC++/ObjC++, ObjC, Swift"
-        Intro.font = UIFont(name: "Verdana", size: 0.8*fontDim)
-        Intro.textColor = UIColor(named: "SpecBlack") /* Toogle dark mode : Cmd + Shift + A */
-        Intro.numberOfLines = 0
-        self.view.addSubview(Intro)
-        
+        let count = NumberFormatter.localizedString(from: NSNumber(value: Benchmark.elementCount), number: .decimal)
+        var introText = "PURPOSE\nTesting the speed of the Fisher-Yates algorithm to shuffle an array of "
+            + "\(count) integers, through 3 different languages:\nC++/ObjC++, ObjC, Swift\n\n"
+            + "Median of \(Benchmark.measuredRounds) runs, after \(Benchmark.warmUpRounds) warm-up runs."
+        #if DEBUG
+        /* In Debug, Swift is compiled with -Onone and C/C++ with -O0 : timings say more about the build settings
+         * than about the languages. Edit Scheme > Run > Build Configuration > Release for meaningful numbers. */
+        introText += "\n\n⚠︎ Debug build : compiler optimisations are off, timings are not representative."
+        #endif
+        let intro = makeLabel(text: introText, size: 13, color: "SpecBlack")
+
         /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
-        /* CASE : C++ */
-        let CaseCPP = UILabel()
-        CaseCPP.frame = CGRect(x:dim, y:self.view.center.y - 5*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
-        CaseCPP.textAlignment = NSTextAlignment.center
-        CaseCPP.text = "C++"
-        CaseCPP.font = UIFont(name: "Verdana", size: fontDim)
-        CaseCPP.textColor = UIColor(named: "SpecWhite")
-        self.view.addSubview(CaseCPP)
-        
-        CaseResultCPP.frame = CGRect(x:dim, y:self.view.center.y - 4*dim + 5, width:self.view.frame.size.width-2*dim, height:1*dim)
-        CaseResultCPP.textAlignment = NSTextAlignment.center
-        CaseResultCPP.font = UIFont(name: "Verdana", size: fontDim)
-        CaseResultCPP.textColor = UIColor(named: "SpecBlack")
-        CaseResultCPP.layer.borderColor = UIColor.white.cgColor
-        CaseResultCPP.layer.borderWidth = 2
-        CaseResultCPP.layer.cornerRadius = 10
-        self.view.addSubview(CaseResultCPP)
-        
+
+        /* CASES : one title + one framed result label per implementation */
+        let casesStack = UIStackView()
+        casesStack.axis = .vertical
+        casesStack.spacing = 6
+
+        for implementation in Implementation.allCases
+        {
+            let title = makeLabel(text: implementation.title, size: 16, color: "SpecWhite")
+
+            let result = makeLabel(text: "–", size: 15, color: "SpecBlack")
+            result.layer.borderColor = UIColor.white.cgColor
+            result.layer.borderWidth = 2
+            result.layer.cornerRadius = 10
+            result.heightAnchor.constraint(greaterThanOrEqualToConstant: 36).isActive = true
+            resultLabels[implementation] = result
+
+            casesStack.addArrangedSubview(title)
+            casesStack.addArrangedSubview(result)
+            casesStack.setCustomSpacing(18, after: result)
+        }
+
         /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
-        /* CASE : OBJC++ */
-        let CaseObjCPP = UILabel()
-        CaseObjCPP.frame = CGRect(x:dim, y:self.view.center.y - 2*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
-        CaseObjCPP.textAlignment = NSTextAlignment.center
-        CaseObjCPP.text = "ObjC++"
-        CaseObjCPP.font = UIFont(name: "Verdana", size: fontDim)
-        CaseObjCPP.textColor = UIColor(named: "SpecWhite")
-        self.view.addSubview(CaseObjCPP)
-        
-        CaseResultObjCPP.frame = CGRect(x:dim, y:self.view.center.y - 1*dim + 5, width:self.view.frame.size.width-2*dim, height:1*dim)
-        CaseResultObjCPP.textAlignment = NSTextAlignment.center
-        CaseResultObjCPP.font = UIFont(name: "Verdana", size: fontDim)
-        CaseResultObjCPP.textColor = UIColor(named: "SpecBlack")
-        CaseResultObjCPP.layer.borderColor = UIColor.white.cgColor
-        CaseResultObjCPP.layer.borderWidth = 2
-        CaseResultObjCPP.layer.cornerRadius = 10
-        self.view.addSubview(CaseResultObjCPP)
-        
+
+        /* STATUS : tells whether every language produced the same permutation */
+        statusLabel.font = verdana(12)
+        statusLabel.adjustsFontForContentSizeCategory = true
+        statusLabel.textColor = UIColor(named: "SpecBlack")
+        statusLabel.textAlignment = .center
+        statusLabel.numberOfLines = 0
+
         /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
-        /* CASE : OBJC */
-        let ObjC = UILabel()
-        ObjC.frame = CGRect(x:dim, y:self.view.center.y + 1*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
-        ObjC.textAlignment = NSTextAlignment.center
-        ObjC.text = "ObjC"
-        ObjC.font = UIFont(name: "Verdana", size: fontDim)
-        ObjC.textColor = UIColor(named: "SpecWhite")
-        self.view.addSubview(ObjC)
-        
-        CaseResultOBJC.frame = CGRect(x:dim, y:self.view.center.y + 2*dim + 5, width:self.view.frame.size.width-2*dim, height:dim)
-        CaseResultOBJC.textAlignment = NSTextAlignment.center
-        CaseResultOBJC.font = UIFont(name: "Verdana", size: fontDim)
-        CaseResultOBJC.textColor = UIColor(named: "SpecBlack")
-        CaseResultOBJC.layer.borderColor = UIColor.white.cgColor
-        CaseResultOBJC.layer.borderWidth = 2
-        CaseResultOBJC.layer.cornerRadius = 10
-        self.view.addSubview(CaseResultOBJC)
-        
-        /*-------------------------------------------------------------------------------------------------------------------------------*/
-    
-        /* CASE : SWIFT */
-        let Swift = UILabel()
-        Swift.frame = CGRect(x:dim, y:self.view.center.y + 4*dim, width:self.view.frame.size.width-2*dim, height:1*dim)
-        Swift.textAlignment = NSTextAlignment.center
-        Swift.text = "Swift"
-        Swift.font = UIFont(name: "Verdana", size: fontDim)
-        Swift.textColor = UIColor(named: "SpecWhite")
-        self.view.addSubview(Swift)
-        
-        CaseResultSWIFT.frame = CGRect(x:dim, y:self.view.center.y + 5*dim + 5, width:self.view.frame.size.width-2*dim, height:1*dim)
-        CaseResultSWIFT.textAlignment = NSTextAlignment.center
-        CaseResultSWIFT.font = UIFont(name: "Verdana", size: fontDim)
-        CaseResultSWIFT.textColor = UIColor(named: "SpecBlack")
-        CaseResultSWIFT.layer.borderColor = UIColor.white.cgColor
-        CaseResultSWIFT.layer.borderWidth = 2
-        CaseResultSWIFT.layer.cornerRadius = 10
-        self.view.addSubview(CaseResultSWIFT)
-    
-        /*-------------------------------------------------------------------------------------------------------------------------------*/
-        /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
-        activity.frame = CGRect(x:0,y:self.view.frame.height - 3*dim, width:dim, height:dim)
+
+        /* BUTTON */
+        runButton.setBackgroundImage(UIImage(named: "Bkg_Normal"), for: .normal)
+        runButton.setBackgroundImage(UIImage(named: "Bkg_Selected"), for: .highlighted)
+        runButton.setTitle("Run Fisher-Yates again", for: .normal)
+        runButton.setTitle("Running…", for: .disabled)
+        runButton.setTitleColor(.white, for: .normal)
+        runButton.setTitleColor(.lightGray, for: .disabled)
+        runButton.titleLabel?.font = verdana(16)
+        runButton.titleLabel?.adjustsFontForContentSizeCategory = true
+        runButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
+        runButton.addTarget(self, action: #selector(runBenchmark), for: .touchUpInside)
+
         activity.hidesWhenStopped = true
-        self.view.addSubview(activity)
-        
+        activity.color = UIColor(named: "SpecWhite")
+
         /*-------------------------------------------------------------------------------------------------------------------------------*/
-        
-        let updateButton = UIButton()
-        updateButton.frame = CGRect(x:dim, y:self.view.frame.height - 3.5*dim, width:self.view.frame.size.width-2*dim, height:1.5*dim)
-        updateButton.setBackgroundImage(UIImage(named: "Bkg_Normal.png"), for: UIControl.State.normal)
-        updateButton.setBackgroundImage(UIImage(named: "Bkg_Selected.png"), for: UIControl.State.highlighted)
-        updateButton.setTitle("Run Fisher-Yates again", for: UIControl.State.normal)
-        updateButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        updateButton.addTarget(self, action: #selector(generateListsAndStats), for: UIControl.Event.touchUpInside)
-        self.view.addSubview(updateButton)
-        
-        /*-------------------------------------------------------------------------------------------------------------------------------*/
+
+        /* LAYOUT : everything in a scroll view, so that large Dynamic Type sizes stay readable */
+        let mainStack = UIStackView(arrangedSubviews: [intro, casesStack, statusLabel, activity, runButton])
+        mainStack.axis = .vertical
+        mainStack.spacing = 24
+        mainStack.translatesAutoresizingMaskIntoConstraints = false
+
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(mainStack)
+        self.view.addSubview(scrollView)
+
+        let margins = self.view.layoutMarginsGuide
+        let content = scrollView.contentLayoutGuide
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
+
+            mainStack.topAnchor.constraint(equalTo: content.topAnchor, constant: 16),
+            mainStack.bottomAnchor.constraint(equalTo: content.bottomAnchor, constant: -16),
+            mainStack.leadingAnchor.constraint(equalTo: content.leadingAnchor),
+            mainStack.trailingAnchor.constraint(equalTo: content.trailingAnchor),
+            mainStack.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
+        ])
+
         /*-------------------------------------------------------------------------------------------------------------------------------*/
     }
-        
-    @objc func generateListsAndStats()
-    {
-        let topInt:Int = 100000
 
+    /*-----------------------------------------------------------------------------------------------------------------------------------*/
+    /* BENCHMARK */
+
+    @objc func runBenchmark()
+    {
+        runButton.isEnabled = false
         activity.startAnimating()
-        
-        //-------------------------------------------------------------------------------------------------------------------------------//
-        /* C++ */
-        let cppElapsedTimeResult:Double = Double(NumbersSeriesObjCPP().fisherYatesAlgoCPP(Int32(topInt)))
-        CaseResultCPP.text = String(format: "%.6f sec (ref. time)", cppElapsedTimeResult)
-        
-        //-------------------------------------------------------------------------------------------------------------------------------//
-        /* OBJC++ */
-        let objcppElapsedTimeResult:Double = Double(NumbersSeriesObjCPP().fisherYatesAlgoObjCPP(Int32(topInt)))
-        CaseResultObjCPP.text = String(format: "%.6f sec ( x %.2f )", objcppElapsedTimeResult, objcppElapsedTimeResult/cppElapsedTimeResult)
-        
-        //-------------------------------------------------------------------------------------------------------------------------------//
-        /* OBJC */
-        let objcElapsedTimeResult:Double = Double(NumbersSeriesObjC().fisherYatesAlgoObjC(Int32(topInt)))
-        CaseResultOBJC.text = String(format: "%.6f sec ( x %.2f )", objcElapsedTimeResult, objcElapsedTimeResult/cppElapsedTimeResult)
-        
-        //-------------------------------------------------------------------------------------------------------------------------------//
-        /* SWIFT */
-        let swiftElapsedTimeResult:Double = Double(NumbersSeriesSwift().fisherYatesAlgoSWIFT(maxnumber: topInt))
-        CaseResultSWIFT.text = String(format: "%.6f sec ( x %.2f )", swiftElapsedTimeResult, swiftElapsedTimeResult/cppElapsedTimeResult)
-    
-        //-------------------------------------------------------------------------------------------------------------------------------//
-        
-        activity.stopAnimating()
+        statusLabel.text = nil
+
+        /* The benchmark takes a while : running it on the main thread would freeze the interface
+         * (and the activity indicator would never get a chance to be drawn). */
+        DispatchQueue.global(qos: .userInitiated).async
+        {
+            let report = Benchmark.run()
+
+            /* UIKit may only be touched from the main thread. */
+            DispatchQueue.main.async
+            {
+                self.display(report)
+                self.activity.stopAnimating()
+                self.runButton.isEnabled = true
+            }
+        }
+    }
+
+    private func display(_ report: BenchmarkReport)
+    {
+        guard let reference = report.stats[.cpp]?.median else { return }
+
+        for (implementation, label) in resultLabels
+        {
+            guard let stats = report.stats[implementation] else { continue }
+
+            let ratio = implementation == .cpp ? "ref." : String(format: "x %.2f", stats.median / reference)
+            label.text = String(format: "%.3f ms  ( %@ )", stats.median * 1000, ratio)
+        }
+
+        statusLabel.text = report.checksumsMatch
+            ? "✓ All languages produced identical permutations."
+            : "⚠︎ The implementations produced different permutations : at least one of them is wrong."
     }
 }
-
-
