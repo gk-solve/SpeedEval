@@ -4,7 +4,7 @@
 
 An iOS app that measures how fast the same algorithm runs in **C++, Objective-C++, Objective-C and Swift**. Each language shuffles an array of **1,000,000 integers** with the [Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle), and the app shows each one's time next to the C++ reference.
 
-The project was first written in 2021 and reworked in October 2026 to make the measurements reliable.
+The project was first written in 2021 and reworked in October 2026 to make the measurements more reliable.
 
 ## Authors and contributors
 
