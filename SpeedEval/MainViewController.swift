@@ -119,7 +119,16 @@ final class MainViewController: UIViewController
         runButton.setTitleColor(.lightGray, for: .disabled)
         runButton.titleLabel?.font = verdana(16)
         runButton.titleLabel?.adjustsFontForContentSizeCategory = true
-        runButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
+        /* The background images are 1920x300 px at @1x, so the button's intrinsic height would be 300 pt.
+         * The fixed height (priority 800) beats the intrinsic size (compression resistance 750),
+         * while the title constraint still lets the button grow with large Dynamic Type sizes. */
+        let fixedHeight = runButton.heightAnchor.constraint(equalToConstant: 50)
+        fixedHeight.priority = UILayoutPriority(800)
+        fixedHeight.isActive = true
+        if let title = runButton.titleLabel
+        {
+            runButton.heightAnchor.constraint(greaterThanOrEqualTo: title.heightAnchor, constant: 16).isActive = true
+        }
         runButton.addTarget(self, action: #selector(runBenchmark), for: .touchUpInside)
 
         activity.hidesWhenStopped = true
