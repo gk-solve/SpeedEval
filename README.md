@@ -1,8 +1,26 @@
 # SpeedEval
 
+## Overview
+
 An iOS app that measures how fast the same algorithm runs in **C++, Objective-C++, Objective-C and Swift**. Each language shuffles an array of **1,000,000 integers** with the [Fisher-Yates algorithm](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle), and the app shows each one's time next to the C++ reference.
 
 The project was first written in 2021 and reworked in October 2026 to make the measurements reliable.
+
+## Authors and contributors
+
+| Topic | Sub-topic | Author/Contributor |
+|---|---|---|
+| Project management | JIRA | - |
+| Project management | Versioning with Git | gk-solve |
+| Functional design | | gk-solve |
+| Technical architecture design | Pattern choice | gk-solve |
+| Technical architecture design | Components and frameworks | gk-solve |
+| Development | Code writing | gk-solve (2021) + Claude Code (2026) |
+| Development | Code comments | Claude Code (2026) |
+| Development | Cloud services set up | - |
+| Testing | Test environment set up | gk-solve (2021) + Claude Code (2026) |
+| Testing | Tests execution | gk-solve |
+| Documentation | README file | Claude Code |
 
 ## What is compared
 
